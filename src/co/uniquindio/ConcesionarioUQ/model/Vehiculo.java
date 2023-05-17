@@ -9,6 +9,7 @@ public class Vehiculo {
 	private Integer cilindraje;
 	private String placa;
 	private TipoTransmision tipoTransmision;
+	private TipoCombustible tipoCombustible;
 
 
 	public Vehiculo(String marca, boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
