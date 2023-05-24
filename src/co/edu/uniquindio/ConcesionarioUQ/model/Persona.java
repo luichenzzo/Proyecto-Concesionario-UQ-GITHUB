@@ -1,4 +1,4 @@
-package co.uniquindio.ConcesionarioUQ.model;
+package co.edu.uniquindio.ConcesionarioUQ.model;
 
 public abstract class Persona {
 	private String nombre;
@@ -49,15 +49,12 @@ public abstract class Persona {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((edad == null) ? 0 : edad.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((identificacion == null) ? 0 : identificacion.hashCode());
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
 		return result;
 	}
 	@Override
@@ -69,30 +66,10 @@ public abstract class Persona {
 		if (getClass() != obj.getClass())
 			return false;
 		Persona other = (Persona) obj;
-		if (edad == null) {
-			if (other.edad != null)
-				return false;
-		} else if (!edad.equals(other.edad))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
 		if (identificacion == null) {
 			if (other.identificacion != null)
 				return false;
 		} else if (!identificacion.equals(other.identificacion))
-			return false;
-		if (nombre == null) {
-			if (other.nombre != null)
-				return false;
-		} else if (!nombre.equals(other.nombre))
-			return false;
-		if (telefono == null) {
-			if (other.telefono != null)
-				return false;
-		} else if (!telefono.equals(other.telefono))
 			return false;
 		return true;
 	}
@@ -101,8 +78,4 @@ public abstract class Persona {
 		return "Persona [nombre=" + nombre + ", edad=" + edad + ", identificacion=" + identificacion + ", email="
 				+ email + ", telefono=" + telefono + "]";
 	}
-
-
-
-
 }

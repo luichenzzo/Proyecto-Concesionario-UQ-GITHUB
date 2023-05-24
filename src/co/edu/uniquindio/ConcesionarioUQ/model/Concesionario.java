@@ -1,4 +1,4 @@
-package co.uniquindio.ConcesionarioUQ.model;
+package co.edu.uniquindio.ConcesionarioUQ.model;
 
 import java.util.ArrayList;
 
@@ -7,18 +7,23 @@ public class Concesionario {
 	private String NIT;
 	private ArrayList <Cliente> listaClientes;
 	private ArrayList <Empleado> listaEmpleado;
+	private ArrayList<Proveedor>listaProveedores;
+	private Administrador administrador;
 	private ArrayList <Vehiculo> listaVehiculos;
 	private ArrayList <Operacion> listaOperaciones;
 
 	public Concesionario(String nombre, String nIT, ArrayList<Cliente> listaClientes, ArrayList<Empleado> listaEmpleado,
-			ArrayList<Vehiculo> listaVehiculos, ArrayList<Operacion> listaOperaciones) {
+			ArrayList<Proveedor> listaProveedores, Administrador administrador, ArrayList<Vehiculo> listaVehiculos,
+			ArrayList<Operacion> listaOperaciones) {
 		super();
 		this.nombre = nombre;
-		this.NIT = nIT;
-		this.listaClientes = listaClientes;
-		this.listaEmpleado = listaEmpleado;
-		this.listaVehiculos = listaVehiculos;
-		this.listaOperaciones = listaOperaciones;
+		NIT = nIT;
+		this.listaClientes = new ArrayList<>();
+		this.listaEmpleado = new ArrayList<>();
+		this.listaProveedores = new ArrayList<>();
+		this.administrador = administrador;
+		this.listaVehiculos = new ArrayList<>();
+		this.listaOperaciones = new ArrayList<>();
 	}
 
 	public Concesionario() {
@@ -57,6 +62,22 @@ public class Concesionario {
 		this.listaEmpleado = listaEmpleado;
 	}
 
+	public ArrayList<Proveedor> getListaProveedores() {
+		return listaProveedores;
+	}
+
+	public void setListaProveedores(ArrayList<Proveedor> listaProveedores) {
+		this.listaProveedores = listaProveedores;
+	}
+
+	public Administrador getAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(Administrador administrador) {
+		this.administrador = administrador;
+	}
+
 	public ArrayList<Vehiculo> getListaVehiculos() {
 		return listaVehiculos;
 	}
@@ -72,7 +93,5 @@ public class Concesionario {
 	public void setListaOperaciones(ArrayList<Operacion> listaOperaciones) {
 		this.listaOperaciones = listaOperaciones;
 	}
-
-
 
 }
