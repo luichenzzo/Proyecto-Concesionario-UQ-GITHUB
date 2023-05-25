@@ -11,15 +11,12 @@ public class Administrador extends Empleado {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Administrador(String nombre, String edad, String identificacion, String email, String telefono) {
+	public Administrador(String nombre, String edad, String identificacion, String email, String telefono, ArrayList<Empleado> listaEmpleadosCargo) {
 		super(nombre, edad, identificacion, email, telefono);
 		// TODO Auto-generated constructor stub
-	}
-
-	public Administrador(ArrayList<Empleado> listaEmpleadosCargo) {
-		super();
 		this.listaEmpleadosCargo = listaEmpleadosCargo;
 	}
+
 
 
 }
