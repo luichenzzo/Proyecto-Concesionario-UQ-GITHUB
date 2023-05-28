@@ -1,9 +1,10 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Proveedor extends Persona{
+public class Proveedor extends Persona implements Serializable{
 
 	private List<OperacionCompra>listaOperacionesCompra;
 

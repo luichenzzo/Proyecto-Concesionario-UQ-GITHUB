@@ -1,6 +1,8 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
-public class Hibrido extends TipoCombustible {
+import java.io.Serializable;
+
+public class Hibrido extends TipoCombustible implements Serializable{
 
 	private boolean enchufable;
 	private boolean ligero;

@@ -1,5 +1,7 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
-public abstract class TipoCombustible {
+import java.io.Serializable;
+
+public abstract class TipoCombustible implements Serializable{
 
 }

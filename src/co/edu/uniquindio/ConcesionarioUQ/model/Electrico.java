@@ -1,6 +1,8 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
-public class Electrico extends TipoCombustible {
+import java.io.Serializable;
+
+public class Electrico extends TipoCombustible implements Serializable{
 
 	private Integer autonomia;
 	private Integer tiempoCarga;

@@ -1,5 +1,7 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
-public class Gasolina extends TipoCombustible{
+import java.io.Serializable;
+
+public class Gasolina extends TipoCombustible implements Serializable{
 
 }

@@ -25,4 +25,6 @@ public class OperacionVenta extends Operacion implements Serializable{
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+
 }
