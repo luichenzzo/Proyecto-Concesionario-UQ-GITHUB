@@ -1,6 +1,8 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
-public class DetalleOperaion {
+import java.io.Serializable;
+
+public class DetalleOperaion implements Serializable {
 
 	private Double subTotal;
 	private Vehiculo vehiculo;

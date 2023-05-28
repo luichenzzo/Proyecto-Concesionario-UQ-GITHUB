@@ -1,6 +1,8 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
-public class Vehiculo {
+import java.io.Serializable;
+
+public class Vehiculo implements Serializable{
 	private String marca;
 	private Boolean nuevo;
 	private Integer modelo;

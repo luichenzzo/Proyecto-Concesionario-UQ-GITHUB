@@ -1,8 +1,9 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Concesionario {
+public class Concesionario implements Serializable{
 	private String nombre;
 	private String NIT;
 	private ArrayList <Cliente> listaClientes;

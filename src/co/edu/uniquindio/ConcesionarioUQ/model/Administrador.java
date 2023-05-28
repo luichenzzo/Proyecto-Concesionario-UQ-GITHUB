@@ -1,8 +1,9 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Administrador extends Empleado {
+public class Administrador extends Empleado implements Serializable{
 
 	private ArrayList <Empleado> listaEmpleadosCargo;
 

@@ -1,8 +1,9 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Operacion {
+public abstract class Operacion implements Serializable{
 
 	private String fecha;
 	private String codigoOperacion;

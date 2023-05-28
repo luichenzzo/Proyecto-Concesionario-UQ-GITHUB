@@ -3,7 +3,7 @@ package co.edu.uniquindio.ConcesionarioUQ.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cliente extends Persona {
+public class Cliente extends Persona{
 
 	private List<OperacionVenta>listaOperacionesVenta;
 	private List<OperacionAlquiler>listaOperacionesAlquiler;

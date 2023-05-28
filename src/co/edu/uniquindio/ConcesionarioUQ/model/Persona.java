@@ -1,6 +1,8 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
-public abstract class Persona {
+import java.io.Serializable;
+
+public abstract class Persona{
 	private String nombre;
 	private String edad;
 	private String identificacion;

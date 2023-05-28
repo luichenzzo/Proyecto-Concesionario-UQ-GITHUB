@@ -1,8 +1,9 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class OperacionCompra extends Operacion{
+public class OperacionCompra extends Operacion implements Serializable{
 
 	private Proveedor proveedor;
 
