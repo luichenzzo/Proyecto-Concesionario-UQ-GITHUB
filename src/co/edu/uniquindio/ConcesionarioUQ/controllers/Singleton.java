@@ -1,6 +1,7 @@
 package co.edu.uniquindio.ConcesionarioUQ.controllers;
 
 import co.edu.uniquindio.ConcesionarioUQ.model.Concesionario;
+import co.edu.uniquindio.ConcesionarioUQ.model.Vehiculo;
 
 public class Singleton {
 
@@ -31,6 +32,10 @@ public class Singleton {
 			instancia = new Singleton();
 		}
 		return instancia;
+	}
+
+	public void agregarVehiculo(Vehiculo carro) {
+		concesionario.getListaVehiculos().add(carro);
 	}
 
 

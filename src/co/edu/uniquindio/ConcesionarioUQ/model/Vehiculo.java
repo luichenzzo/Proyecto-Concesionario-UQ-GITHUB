@@ -107,6 +107,24 @@ public class Vehiculo {
 	public TipoCombustible getTipoCombustible() {
 		return tipoCombustible;
 	}
+	public String obtenerTipoCombustible(){
+		if(tipoCombustible instanceof Diesel){
+			return "Diesel";
+		}
+		else if (tipoCombustible instanceof Gasolina){
+			return "Gasolina";
+		}
+		else if (tipoCombustible instanceof Hibrido){
+			return "Hibrido";
+		}
+		else if (tipoCombustible instanceof Electrico){
+			return "Electrico";
+		}
+		else{
+			return "Desconocido";
+		}
+	}
+
 
 	public void setTipoCombustible(TipoCombustible tipoCombustible) {
 		this.tipoCombustible = tipoCombustible;
@@ -143,4 +161,14 @@ public class Vehiculo {
 				+ cantidadCambios + ", velocidadMáxima=" + velocidadMáxima + ", cilindraje=" + cilindraje + ", placa="
 				+ placa + ", rutaImagen=" + rutaImagen + ", tipoTransmision=" + tipoTransmision + "]";
 	}
+
+	public String isNew() {
+		if (nuevo){
+			return "El vehiculo es nuevo.";
+		}
+		else{
+			return "El vehiculo NO es nuevo";
+		}
+	}
+
 }
