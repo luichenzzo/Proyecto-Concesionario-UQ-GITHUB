@@ -10,7 +10,7 @@ public class OperacionAlquiler extends Operacion implements Serializable{
 	private Double valordia;
 
 	public OperacionAlquiler(String fecha, String codigoOperacion, Double total,
-			ArrayList<DetalleOperaion> listaDetalles, Empleado empleado, Cliente cliente, Integer diasAlquiler,
+			ArrayList<DetalleOperacion> listaDetalles, Empleado empleado, Cliente cliente, Integer diasAlquiler,
 			Double valordia) {
 		super(fecha, codigoOperacion, total, listaDetalles, empleado);
 		this.cliente = cliente;
@@ -19,7 +19,7 @@ public class OperacionAlquiler extends Operacion implements Serializable{
 	}
 
 	public OperacionAlquiler(String fecha, String codigoOperacion, Double total,
-			ArrayList<DetalleOperaion> listaDetalles, Empleado empleado) {
+			ArrayList<DetalleOperacion> listaDetalles, Empleado empleado) {
 		super(fecha, codigoOperacion, total, listaDetalles, empleado);
 	}
 

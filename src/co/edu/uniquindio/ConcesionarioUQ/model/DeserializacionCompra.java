@@ -7,18 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.EOFException;
 
-public class DeserializacionVenta {
+public class DeserializacionCompra {
 
     public static void main(String[] args) {
-        List<OperacionVenta> ventas = obtenerVentasSerializados();
+        List<OperacionCompra> compras = obtenerComprasSerializados();
 
-        // Utiliza los datos de las ventas deserializados
-        for (OperacionVenta venta : ventas) {
-            System.out.println("fecha: " + venta.getFecha());
-            System.out.println("codigo operacion: " + venta.getCodigoOperacion());
-            System.out.println("Total: " + venta.getTotal());
+        // Utiliza los datos de las compras deserializados
+        for (OperacionCompra compra : compras) {
+            System.out.println("fecha: " + compra.getFecha());
+            System.out.println("codigo operacion: " + compra.getCodigoOperacion());
+            System.out.println("Total: " + compra.getTotal());
             System.out.println("detalles Operacion:");
-            List<DetalleOperacion> detalles = venta.getListaDetalles();
+            List<DetalleOperacion> detalles = compra.getListaDetalles();
             if (detalles.isEmpty()) {
                 System.out.println("  No hay detalles disponibles.");
             } else {
@@ -26,24 +26,23 @@ public class DeserializacionVenta {
                     System.out.println("  - " + detalle);
                 }
             }
-            System.out.println("Empleado: " + venta.getEmpleado());
-            System.out.println("Cliente: " + venta.getCliente());
+            System.out.println("Empleado: " + compra.getEmpleado());
             System.out.println("--------------------");
         }
     }
 
-    private static List<OperacionVenta> obtenerVentasSerializados() {
-        List<OperacionVenta> ventas = new ArrayList<>();
+    private static List<OperacionCompra> obtenerComprasSerializados() {
+        List<OperacionCompra> compras = new ArrayList<>();
 
         try {
-            FileInputStream fileIn = new FileInputStream("operacionVenta.ser");
+            FileInputStream fileIn = new FileInputStream("operacionCompra.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            OperacionVenta venta;
+            OperacionCompra compra;
 
             while (true) {
                 try {
-                    venta = (OperacionVenta) in.readObject();
-                    ventas.add(venta);
+                    compra = (OperacionCompra) in.readObject();
+                    compras.add(compra);
                 } catch (EOFException e) {
                     break; // Salir del bucle al alcanzar el final del archivo
                 }
@@ -57,6 +56,7 @@ public class DeserializacionVenta {
             e.printStackTrace();
         }
 
-        return ventas;
+        return compras;
     }
 }
+
