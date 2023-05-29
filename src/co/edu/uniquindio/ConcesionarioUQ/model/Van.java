@@ -4,6 +4,7 @@ public class Van extends SafeFamily{
 
 	private Integer capacidadMaletero;
 
+
 	public Van(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
 			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
 			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire,

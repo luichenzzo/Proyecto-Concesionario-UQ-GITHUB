@@ -7,13 +7,14 @@ public class Proveedor extends Persona{
 
 	private List<OperacionCompra>listaOperacionesCompra;
 
-	public Proveedor(String nombre, String edad, String identificacion, String email, String telefono,
+
+	public Proveedor(String nombre, Integer edad, String identificacion, String email, String telefono,
 			List<OperacionCompra> listaOperacionesCompra) {
 		super(nombre, edad, identificacion, email, telefono);
 		this.listaOperacionesCompra = new ArrayList<>();
 	}
 
-	public Proveedor(String nombre, String edad, String identificacion, String email, String telefono) {
+	public Proveedor(String nombre, Integer edad, String identificacion, String email, String telefono) {
 		super(nombre, edad, identificacion, email, telefono);
 	}
 

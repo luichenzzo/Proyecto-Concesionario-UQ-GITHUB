@@ -1,20 +1,24 @@
 package co.edu.uniquindio.ConcesionarioUQ.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Administrador extends Empleado {
 
 	private ArrayList <Empleado> listaEmpleadosCargo;
 
-	public Administrador() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Administrador(String nombre, Integer edad, String identificacion, String email, String telefono,
+			List<Operacion> listaOperaciones, String contraseña, ArrayList<Empleado> listaEmpleadosCargo) {
+		super(nombre, edad, identificacion, email, telefono, listaOperaciones, contraseña);
+		this.listaEmpleadosCargo = listaEmpleadosCargo;
 	}
 
-	public Administrador(String nombre, String edad, String identificacion, String email, String telefono) {
-		super(nombre, edad, identificacion, email, telefono);
-		listaEmpleadosCargo = new ArrayList<>();
+	public Administrador(String nombre, Integer edad, String identificacion, String email, String telefono,
+			List<Operacion> listaOperaciones, String contraseña) {
+		super(nombre, edad, identificacion, email, telefono, listaOperaciones, contraseña);
 	}
+
+
 
 	public ArrayList<Empleado> getListaEmpleadosCargo() {
 		return listaEmpleadosCargo;

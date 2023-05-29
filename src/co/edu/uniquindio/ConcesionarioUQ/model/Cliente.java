@@ -8,16 +8,20 @@ public class Cliente extends Persona {
 	private List<OperacionVenta>listaOperacionesVenta;
 	private List<OperacionAlquiler>listaOperacionesAlquiler;
 
-	public Cliente(String nombre, String edad, String identificacion, String email, String telefono,
+
+	public Cliente(String nombre, Integer edad, String identificacion, String email, String telefono,
 			List<OperacionVenta> listaOperacionesVenta, List<OperacionAlquiler> listaOperacionesAlquiler) {
 		super(nombre, edad, identificacion, email, telefono);
 		this.listaOperacionesVenta = new ArrayList<>();
 		this.listaOperacionesAlquiler = new ArrayList<>();
 	}
 
-	public Cliente(String nombre, String edad, String identificacion, String email, String telefono) {
+
+	public Cliente(String nombre, Integer edad, String identificacion, String email, String telefono) {
 		super(nombre, edad, identificacion, email, telefono);
 	}
+
+
 
 	public List<OperacionVenta> getListaOperacionesVenta() {
 		return listaOperacionesVenta;

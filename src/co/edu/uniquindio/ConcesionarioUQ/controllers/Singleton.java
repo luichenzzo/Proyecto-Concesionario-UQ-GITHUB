@@ -1,6 +1,12 @@
 package co.edu.uniquindio.ConcesionarioUQ.controllers;
 
-import co.edu.uniquindio.ConcesionarioUQ.model.Concesionario;
+import co.edu.uniquindio.ConcesionarioUQ.model.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 public class Singleton {
 
@@ -21,6 +27,13 @@ public class Singleton {
 		this.concesionario = new Concesionario();
 	}
 
+	public Concesionario getConcesionario() {
+		return concesionario;
+	}
+
+	public void setConcesionario(Concesionario concesionario) {
+		this.concesionario = concesionario;
+	}
 	/**
 	 * el metodo obtenerInstancia se define como estatico, con la finalidad de obtener la instancia del
 	 * Singleton sin la necesidad de tener un objeto de la misma.
@@ -32,5 +45,82 @@ public class Singleton {
 		}
 		return instancia;
 	}
+
+
+	public ObservableList<Empleado> obtenerListaEmpleados (){
+		return FXCollections.observableArrayList(concesionario.getListaEmpleado());
+	}
+
+	public void agregarEmpleado(Empleado empleado) {
+		concesionario.agregarEmpleado(empleado);
+
+	}
+
+	public void crearAlerta (String titulo, String encabezado, String contenido, AlertType tipoAlerta){
+		Alert alerta = new Alert(tipoAlerta);
+		alerta.setTitle(titulo);
+		alerta.setHeaderText(encabezado);
+		alerta.setContentText(contenido);
+		alerta.showAndWait();
+	}
+
+	public int contarEmpleadoIdentificacionIgual(Empleado empleado) {
+		return concesionario.contarEmpleadoIdentificacionIgual(empleado);
+	}
+
+
+    public boolean verificarCamposLlenos(TextField... camposTexto) {
+		boolean todosLlenos = true;
+		for (TextField campoTexto : camposTexto) {
+            if (campoTexto.getText().isEmpty()) {
+                todosLlenos = false;
+            }
+        }
+		return todosLlenos;
+
+	}
+
+	public boolean verificarCredenciales(String identificacion, String contraseña) {
+		return concesionario.verificarCredenciales(identificacion, contraseña);
+	}
+
+	public Empleado obtenerEmpleadoIngreso(String identificacion) {
+		return concesionario.obtenerEmpleadoDeIngreso(identificacion);
+	}
+
+	public boolean verificarCredencialesAdminidtrador(String identificacion, String contraseña) {
+		return concesionario.verificarCredencialesAdministrador(identificacion, contraseña);
+	}
+
+	public boolean EmpleadoExistente(String identificacion) {
+		return concesionario.empleadoExistente(identificacion);
+
+	}
+
+	public ObservableList<Cliente> obtenerListaClientes() {
+		return FXCollections.observableArrayList(concesionario.getListaClientes());
+	}
+
+	public int contarClientesIdentificacionIgual(Cliente cliente) {
+		return concesionario.contarEmpleadoIdentificacionIgual(cliente);
+	}
+
+	public void agregarCliente(Cliente cliente) {
+		concesionario.agregarCliente(cliente);
+	}
+
+	public int contarProveedoresIdentificacionIgual(Proveedor proveedor) {
+		return concesionario.contarProveedoresIdentificacionIgual(proveedor);
+	}
+
+	public ObservableList<Proveedor> obtenerListaProveedores() {
+		return FXCollections.observableArrayList(concesionario.getListaProveedores());
+	}
+
+	public void agregarProveedor(Proveedor proveedor) {
+		concesionario.agregarProveedor(proveedor);
+	}
+
+
 
 }

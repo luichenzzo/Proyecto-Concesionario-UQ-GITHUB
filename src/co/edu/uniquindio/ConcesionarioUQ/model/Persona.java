@@ -2,13 +2,13 @@ package co.edu.uniquindio.ConcesionarioUQ.model;
 
 public abstract class Persona {
 	private String nombre;
-	private String edad;
+	private Integer edad;
 	private String identificacion;
 	private String email;
 	private String telefono;
 
 
-	public Persona(String nombre, String edad, String identificacion, String email, String telefono) {
+	public Persona(String nombre, Integer edad, String identificacion, String email, String telefono) {
 		super();
 		this.nombre = nombre;
 		this.edad = edad;
@@ -25,10 +25,10 @@ public abstract class Persona {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getEdad() {
+	public Integer getEdad() {
 		return edad;
 	}
-	public void setEdad(String edad) {
+	public void setEdad(Integer edad) {
 		this.edad = edad;
 	}
 	public String getIdentificacion() {
