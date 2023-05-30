@@ -192,9 +192,9 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="453.0" prefWidth="610.0">
                      <children>
-                        <Label layoutX="41.0" layoutY="31.0" text="Cantidad Ejes : " />
+                        <Label layoutX="41.0" layoutY="31.0" text="Cantidad Cambios : " />
                         <Label layoutX="40.0" layoutY="66.0" text="Cantidad Salidas de Emergencia : " />
-                        <TextField fx:id="txtCantidadEjes" layoutX="240.0" layoutY="27.0" prefHeight="26.0" prefWidth="326.0" />
+                        <TextField fx:id="txtCantidadCambios" layoutX="240.0" layoutY="27.0" prefHeight="26.0" prefWidth="326.0" />
                         <TextField fx:id="txtSalidasEmergencia" layoutX="241.0" layoutY="62.0" prefHeight="26.0" prefWidth="326.0" />
                         <Button fx:id="btnGuardarBus" layoutX="234.0" layoutY="392.0" mnemonicParsing="false" onAction="#guardarBus" prefHeight="26.0" prefWidth="126.0" text="Guardar" />
                      </children>

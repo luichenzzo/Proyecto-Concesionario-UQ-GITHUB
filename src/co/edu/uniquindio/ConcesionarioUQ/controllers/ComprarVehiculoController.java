@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.sun.javafx.image.impl.ByteIndexed.Getter;
+
 import co.edu.uniquindio.ConcesionarioUQ.model.Bus;
 import co.edu.uniquindio.ConcesionarioUQ.model.Camion;
 import co.edu.uniquindio.ConcesionarioUQ.model.Camioneta;
@@ -28,7 +30,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.TabPaneBuilder;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
@@ -188,6 +189,10 @@ public class ComprarVehiculoController implements Initializable{
     private TextField txtCambios;
 
     @FXML
+    private TextField txtCantidadEjes;
+
+
+    @FXML
     private TextField txtCapacidadCarga;
 
     @FXML
@@ -297,22 +302,24 @@ public class ComprarVehiculoController implements Initializable{
 
 
 
-    //falta un metodo para cada ventana que verifique que los textFields este llenos
+
     @FXML
     void continuarGeneralidades(ActionEvent event) {
     	if(choiceBoxTipoCombustible.getValue()!= null && choiceBoxTipoCombustible.getValue().equals("Híbrido")){
     		cambiarDeTab(hibrido);
     	}else{
-    		if(choiceBoxTipoCombustible.getValue().equals("Eléctrico")){
+    		if(choiceBoxTipoCombustible.getValue()!= null &&choiceBoxTipoCombustible.getValue().equals("Eléctrico")){
     			cambiarDeTab(electrico);
     		}else{
-    			if(choiceBoxTipoVehiculo.getValue().equals("Moto")){
+    			if(choiceBoxTipoVehiculo.getValue()!= null && choiceBoxTipoVehiculo.getValue().equals("Moto")){
     				GuardarMoto();
     			}else{
-    				if(choiceBoxTipoVehiculo.getValue().equals("Camión")){
+    				if(choiceBoxTipoVehiculo.getValue()!= null && choiceBoxTipoVehiculo.getValue().equals("Camión")){
     					cambiarDeTab(camion);
     				}else{
-    					cambiarDeTab(automovil);
+    					if(choiceBoxTipoVehiculo.getValue()!=null){
+    						cambiarDeTab(automovil);
+    					}
     				}
     			}
     		}
@@ -324,12 +331,8 @@ public class ComprarVehiculoController implements Initializable{
 		String marca = txtMarca.getText();
 		boolean nuevo = determinarBooleano(choiceBoxNuevo.getValue());
 		int modelo = Integer.parseInt(txtModelo.getText());
-		System.out.println(modelo);
 		String a = txtCambios.getText();
-
-
 		int cantidadCambios = Integer.parseInt(a);
-		System.out.println(cantidadCambios);
 		int velocidadMaxima = Integer.parseInt(txtVelocidadMaxima.getText());
 		int cilindraje = Integer.parseInt(txtCilindraje.getText());
 		String placa = txtPlaca.getText();
@@ -341,6 +344,9 @@ public class ComprarVehiculoController implements Initializable{
 		if(validarDatosGeneralidades()){
 			try {
 				Vehiculo x = new Moto(marca, nuevo, modelo, cantidadCambios, velocidadMaxima, cilindraje, placa, rutaImagen, tipoTransmision, tipoCombustible, precio);
+				singleton.agregarVehiculo(x);
+				System.out.println("guardado");
+				singleton.crearAlerta("Vehiculo Registrado",null,"ha registrado un vehiculo con exito", AlertType.INFORMATION);
 
 			} catch (NumberFormatException e) {
 				singleton.crearAlerta("Error Formato", null, "verifique que el formato sea correcto",
@@ -351,6 +357,7 @@ public class ComprarVehiculoController implements Initializable{
 	}
 
 	private boolean validarDatosGeneralidades() {
+		System.out.println("verificando");
 		String marca = txtMarca.getText();
 		String nuevo = choiceBoxNuevo.getValue();
 		String modelo = txtModelo.getText();
@@ -442,10 +449,10 @@ public class ComprarVehiculoController implements Initializable{
 
 	@FXML
     void continuarAutomovil(ActionEvent event) {
-		if(choiceBoxTipoAutomovil.getValue().equals("Deportivo")){
+		if(choiceBoxTipoAutomovil.getValue()!= null && choiceBoxTipoAutomovil.getValue().equals("Deportivo")){
 			cambiarDeTab(deportivo);
 		}else{
-			if(choiceBoxTipoAutomovil.getValue().equals("Safe Family")){
+			if(choiceBoxTipoAutomovil.getValue()!= null && choiceBoxTipoAutomovil.getValue().equals("Safe Family")){
 				cambiarDeTab(safeFamily);
 			}
 		}
@@ -453,18 +460,33 @@ public class ComprarVehiculoController implements Initializable{
 
     @FXML
     void continuarElectrico(ActionEvent event) {
-    	if(choiceBoxTipoVehiculo.getValue().equals("Moto")){
-    		//guardar Moto
+    	if(choiceBoxTipoVehiculo.getValue()!= null && choiceBoxTipoVehiculo.getValue().equals("Moto")){
+    		GuardarMoto();
     	}else{
-    		if(choiceBoxTipoVehiculo.getValue().equals("Camión")){
+    		if(choiceBoxTipoVehiculo.getValue()!= null && choiceBoxTipoVehiculo.getValue().equals("Camión")){
     			cambiarDeTab(camion);
     		}else{
-    			cambiarDeTab(automovil);
+    			if(choiceBoxTipoVehiculo.getValue()!=null){
+    				cambiarDeTab(automovil);
+    			}
     		}
     	}
     }
 
-
+    @FXML
+    void continuarHibrido(ActionEvent event) {
+		if(choiceBoxTipoVehiculo.getValue()!= null && choiceBoxTipoVehiculo.getValue().equals("Moto")){
+			GuardarMoto();
+    	}else{
+    		if(choiceBoxTipoVehiculo.getValue()!= null && choiceBoxTipoVehiculo.getValue().equals("Camión")){
+    			cambiarDeTab(camion);
+    		}else{
+    			if(choiceBoxTipoVehiculo.getValue()!= null){
+    				cambiarDeTab(automovil);
+    			}
+    		}
+    	}
+	}
 
 	private boolean determinarBooleano(String value) {
 		if (value.equals("SI")){
@@ -473,50 +495,27 @@ public class ComprarVehiculoController implements Initializable{
 		return false;
 	}
 
-	@FXML
-    void continuarHibrido(ActionEvent event) {
-		if(choiceBoxTipoVehiculo.getValue().equals("Moto")){
-    		//guardar Moto
-    	}else{
-    		if(choiceBoxTipoVehiculo.getValue().equals("Camión")){
-    			cambiarDeTab(camion);
-    		}else{
-    			cambiarDeTab(automovil);
-    		}
-    	}
-	}
 
     @FXML
     void continuarSafeFamily(ActionEvent event) {
-    	if(choiceBoxTipoSafeFamily.getValue().equals("Pick Up")){
+    	if(choiceBoxTipoSafeFamily.getValue()!=null && choiceBoxTipoSafeFamily.getValue().equals("Pick Up")){
     		cambiarDeTab(pickup);
     	}else{
-    		if(choiceBoxTipoSafeFamily.getValue().equals("Van")){
+    		if(choiceBoxTipoSafeFamily.getValue()!= null && choiceBoxTipoSafeFamily.getValue().equals("Van")){
     			cambiarDeTab(van);
     		}
     	}
     }
 
     @FXML
-    void continuarSedaneta(ActionEvent event) {
-    	if(choiceBoxTipoSedan.getValue().equals("Sedán")){
-    		//guardarSedan
-    	}else{
-    		if(choiceBoxTipoSedan.getValue().equals("Camioneta")){
-    			cambiarDeTab(camioneta);
-    		}
-    	}
-    }
-
-    @FXML
     void continuarVan(ActionEvent event) {
-    	if(choiceBoxTipoVan.getValue().equals("Van")){
-    		//guardar Van
+    	if(choiceBoxTipoVan.getValue()!= null && choiceBoxTipoVan.getValue().equals("Van")){
+    		agregarVan();
     	}else{
-    		if(choiceBoxTipoVan.getValue().equals("Bus")){
+    		if(choiceBoxTipoVan.getValue()!= null && choiceBoxTipoVan.getValue().equals("Bus")){
     			cambiarDeTab(bus);
     		}else{
-    			if(choiceBoxTipoVan.getValue().equals("Sedaneta")){
+    			if(choiceBoxTipoVan.getValue()!= null && choiceBoxTipoVan.getValue().equals("Sedaneta")){
     				cambiarDeTab(sedaneta);
     			}
     		}
@@ -524,12 +523,20 @@ public class ComprarVehiculoController implements Initializable{
     }
 
     @FXML
-    void guardarBus(ActionEvent event) {
-
+    void continuarSedaneta(ActionEvent event) {
+    	if(choiceBoxTipoSedan.getValue()!=null && choiceBoxTipoSedan.getValue().equals("Sedán")){
+    		agregarSedan();
+    	}else{
+    		if(choiceBoxTipoSedan.getValue()!= null && choiceBoxTipoSedan.getValue().equals("Camioneta")){
+    			cambiarDeTab(camioneta);
+    		}
+    	}
     }
 
+
+
     @FXML
-    void guardarCamion(ActionEvent event) {
+    void guardarBus(ActionEvent event) {
     	String marca = txtMarca.getText();
 		boolean nuevo = determinarBooleano(choiceBoxNuevo.getValue());
 		int modelo = Integer.parseInt(txtModelo.getText());
@@ -540,22 +547,382 @@ public class ComprarVehiculoController implements Initializable{
 		String rutaImagen = txtRutaImagen.getText();
 		TipoTransmision tipoTransmision = determinarTipoTransmision(choiceBoxTipoTransmision.getValue());
 		TipoCombustible tipoCombustible= determinarTipoCombustible(choiceBoxTipoCombustible.getValue());
+		Double precio = Double.valueOf(txtPrecioCompra.getText());
+		int numeroPasajeros = Integer.parseInt(txtNumeroPasajeros.getText());
+		int numeroPuertas = Integer.parseInt(txtNumeroPuertas.getText());
+		int bolsasAire = Integer.parseInt(txtBolsasAire.getText());
+		boolean aireAcondicionado = determinarBooleano(choiceBoxAireAcondicionadoSafeFamily.getValue());
+		boolean camaraReversa = determinarBooleano(choiceBoxCamaraReversaSafeFamily.getValue());
+		boolean frenoABS = determinarBooleano(choiceBoxFrenoABSSafeFamily.getValue());
+		int capacidadMaletero = Integer.parseInt(txtCapacidadMaletero.getText());
+		int cantidadEjes = Integer.parseInt(txtCantidadEjes.getText());
+		int cantidadSalidasEmergencia = Integer.parseInt(txtSalidasEmergencia.getText());
+
+
+		if (validarDatosGeneralidades() && validarDatosAutomovil()&& validarDatosSafeFamily()&& validarDatosVan() && validarDatosBus()){
+    		try {
+				Vehiculo x = new Bus(marca, nuevo, modelo, cantidadCambios, velocidadMaxima, cilindraje, placa, rutaImagen, tipoTransmision, tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa, frenoABS, capacidadMaletero, cantidadEjes,cantidadSalidasEmergencia, precio);
+				singleton.agregarVehiculo(x);
+				singleton.crearAlerta("Vehiculo Registrado",null,"ha registrado un vehiculo con exito", AlertType.INFORMATION);
+
+			} catch (NumberFormatException e) {
+				singleton.crearAlerta("Error Formato", null, "verifique que el formato sea correcto",
+						AlertType.ERROR);
+			}
+    	}
+
 
     }
 
-    @FXML
-    void guardarCamioneta(ActionEvent event) {
+    private boolean validarDatosBus() {
+		String notificacion = "";
+		if (txtCantidadEjes.getText().equals("")||txtCantidadEjes.getText()==null){
+			notificacion = "Campos llenos";
+		}
+		if (txtSalidasEmergencia.getText().equals("")||txtSalidasEmergencia.getText()==null){
+			notificacion = "Campos llenos";
+		}
+		if(notificacion.equals("")){
+			return true;
+		}
+		return false;
+	}
 
+	@FXML
+    void guardarCamion(ActionEvent event) {
+
+    	String marca = txtMarca.getText();
+		boolean nuevo = determinarBooleano(choiceBoxNuevo.getValue());
+		int modelo = Integer.parseInt(txtModelo.getText());
+		int cantidadCambios = Integer.parseInt(txtCambios.getText());
+		int velocidadMaxima = Integer.parseInt(txtVelocidadMaxima.getText());
+		int cilindraje = Integer.parseInt(txtCilindraje.getText());
+		String placa = txtPlaca.getText();
+		String rutaImagen = txtRutaImagen.getText();
+		TipoTransmision tipoTransmision = determinarTipoTransmision(choiceBoxTipoTransmision.getValue());
+		TipoCombustible tipoCombustible= determinarTipoCombustible(choiceBoxTipoCombustible.getValue());
+		Double precio = Double.valueOf(txtPrecioCompra.getText());
+		boolean aireAcondicionado = determinarBooleano(choiceBoxAireAcondicionadoCamion.getValue());
+		boolean frenoABS = determinarBooleano(choiceBoxFrenoABSCamion.getValue());
+		int numeroEjes = Integer.parseInt(txtNumeroEjesCamion.getText());
+		boolean frenoAire = determinarBooleano(choiceBoxFrenoAireCamion.getValue());
+		String tipoCamion = txtTipoCamion.getText();
+
+    	if (validarDatosGeneralidades() && validarDatosCamion()){
+    		try {
+				Vehiculo x = new Camion(marca, nuevo, modelo, cantidadCambios, velocidadMaxima, cilindraje, placa, rutaImagen, tipoTransmision, tipoCombustible, aireAcondicionado,frenoABS, numeroEjes, frenoAire, tipoCamion, precio);
+				singleton.agregarVehiculo(x);
+				singleton.crearAlerta("Vehiculo Registrado",null,"ha registrado un vehiculo con exito", AlertType.INFORMATION);
+
+			} catch (NumberFormatException e) {
+				singleton.crearAlerta("Error Formato", null, "verifique que el formato sea correcto",
+						AlertType.ERROR);
+			}
+    	}
     }
+
+    private boolean validarDatosCamion() {
+		String x = "";
+		if (choiceBoxAireAcondicionadoCamion.getValue()==null){
+			x = "campo Vacio";
+		}
+		if (choiceBoxFrenoABSCamion.getValue()==null){
+			x = "campo Vacio";
+		}
+		if(txtNumeroEjesCamion.getText().equals("") || txtNumeroEjesCamion.getText()==null){
+			x = "campo Vacio";
+		}
+		if(choiceBoxFrenoAireCamion.getValue()==null){
+			x = "campo Vacio";
+		}
+		if(txtTipoCamion.getText().equals("")||txtTipoCamion.getText()==null){
+			x = "campo Vacio";
+		}
+		if (x.equals("")){
+			return true;
+		}
+		return false;
+	}
+
+
 
     @FXML
     void guardarDeportivo(ActionEvent event) {
+    	String marca = txtMarca.getText();
+		boolean nuevo = determinarBooleano(choiceBoxNuevo.getValue());
+		int modelo = Integer.parseInt(txtModelo.getText());
+		int cantidadCambios = Integer.parseInt(txtCambios.getText());
+		int velocidadMaxima = Integer.parseInt(txtVelocidadMaxima.getText());
+		int cilindraje = Integer.parseInt(txtCilindraje.getText());
+		String placa = txtPlaca.getText();
+		String rutaImagen = txtRutaImagen.getText();
+		TipoTransmision tipoTransmision = determinarTipoTransmision(choiceBoxTipoTransmision.getValue());
+		TipoCombustible tipoCombustible= determinarTipoCombustible(choiceBoxTipoCombustible.getValue());
+		Double precio = Double.valueOf(txtPrecioCompra.getText());
+		int numeroPasajeros = Integer.parseInt(txtNumeroPasajeros.getText());
+		int numeroPuertas = Integer.parseInt(txtNumeroPuertas.getText());
+		int bolsasAire = Integer.parseInt(txtBolsasAire.getText());
+		int caballosFuerza = Integer.parseInt(txtCaballosFuerza.getText());
+		int Tiempo100km = Integer.parseInt(txtTiempo100km.getText());
+
+		if (validarDatosGeneralidades() && validarDatosAutomovil()&& validarDatosDeportivo()){
+    		try {
+				Vehiculo x = new Deportivo(marca, nuevo, modelo, cantidadCambios, velocidadMaxima, cilindraje, placa, rutaImagen, tipoTransmision, tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire,caballosFuerza,Tiempo100km, precio);
+				singleton.agregarVehiculo(x);
+				System.out.println("agregado");
+				singleton.crearAlerta("Vehiculo Registrado",null,"ha registrado un vehiculo con exito", AlertType.INFORMATION);
+				System.out.println("agregado");
+			} catch (NumberFormatException e) {
+				singleton.crearAlerta("Error Formato", null, "verifique que el formato sea correcto",
+						AlertType.ERROR);
+			}
+    	}
+
 
     }
 
-    @FXML
+    private boolean validarDatosDeportivo() {
+    	String notificacion = "";
+    	if (txtCaballosFuerza.getText().equals("")||txtCaballosFuerza.getText()==null){
+    		notificacion = "Campos llenos";
+    	}
+    	if (txtTiempo100km.getText().equals("")||txtTiempo100km.getText()== null){
+    		notificacion = "Campos llenos";
+    	}
+    	if(notificacion.equals("")){
+    		return true;
+    	}
+    	return false;
+	}
+
+	private boolean validarDatosAutomovil() {
+		String notificacion = "";
+		if(txtNumeroPasajeros.getText().equals("")||txtNumeroPasajeros.getText()==null){
+			notificacion = "Campos llenos";
+		}
+		if(txtNumeroPuertas.getText().equals("")||txtNumeroPuertas.getText()==null){
+			notificacion = "Campos llenos";
+		}
+		if(txtBolsasAire.getText().equals("")||txtBolsasAire.getText()==null){
+			notificacion = "Campos llenos";
+		}
+		if(notificacion.equals("")){
+			return true;
+		}
+		return false;
+	}
+
+	@FXML
+    void guardarCamioneta(ActionEvent event) {
+		String marca = txtMarca.getText();
+		boolean nuevo = determinarBooleano(choiceBoxNuevo.getValue());
+		int modelo = Integer.parseInt(txtModelo.getText());
+		int cantidadCambios = Integer.parseInt(txtCambios.getText());
+		int velocidadMaxima = Integer.parseInt(txtVelocidadMaxima.getText());
+		int cilindraje = Integer.parseInt(txtCilindraje.getText());
+		String placa = txtPlaca.getText();
+		String rutaImagen = txtRutaImagen.getText();
+		TipoTransmision tipoTransmision = determinarTipoTransmision(choiceBoxTipoTransmision.getValue());
+		TipoCombustible tipoCombustible= determinarTipoCombustible(choiceBoxTipoCombustible.getValue());
+		Double precio = Double.valueOf(txtPrecioCompra.getText());
+		int numeroPasajeros = Integer.parseInt(txtNumeroPasajeros.getText());
+		int numeroPuertas = Integer.parseInt(txtNumeroPuertas.getText());
+		int bolsasAire = Integer.parseInt(txtBolsasAire.getText());
+		boolean aireAcondicionado = determinarBooleano(choiceBoxAireAcondicionadoSafeFamily.getValue());
+		boolean camaraReversa = determinarBooleano(choiceBoxCamaraReversaSafeFamily.getValue());
+		boolean frenoABS = determinarBooleano(choiceBoxFrenoABSSafeFamily.getValue());
+		int capacidadMaletero = Integer.parseInt(txtCapacidadMaletero.getText());
+		boolean velocidadCrucero = determinarBooleano(choiceBoxVelocidadCrecuero.getValue());
+		boolean sensorColision = determinarBooleano(choiceBoxSensorColision.getValue());
+		boolean sensorTraficoCruzado = determinarBooleano(choiceBoxSensorTraficoCruzado.getValue());
+		boolean permanenciaCarril = determinarBooleano(choiceBoxPermanenciaCarrirl.getValue());
+		boolean is4x4 = determinarBooleano(choiceBox4x4Camioneta.getValue());
+
+		if (validarDatosGeneralidades() && validarDatosAutomovil()&& validarDatosSafeFamily()&& validarDatosVan() && validarDatosSedan() && validarDatosCamioneta()){
+    		try {
+				Vehiculo x = new Camioneta(marca, nuevo, modelo, cantidadCambios, velocidadMaxima, cilindraje, placa, rutaImagen, tipoTransmision, tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa, frenoABS, capacidadMaletero, velocidadCrucero,sensorColision, sensorTraficoCruzado, permanenciaCarril, is4x4, precio);
+				singleton.agregarVehiculo(x);
+				singleton.crearAlerta("Vehiculo Registrado",null,"ha registrado un vehiculo con exito", AlertType.INFORMATION);
+
+			} catch (NumberFormatException e) {
+				singleton.crearAlerta("Error Formato", null, "verifique que el formato sea correcto",
+						AlertType.ERROR);
+			}
+    	}
+
+
+    }
+
+	private boolean validarDatosCamioneta() {
+		if ( choiceBox4x4Camioneta.getValue()==null){
+			return false;
+		}return true;
+	}
+
+	private void agregarSedan(){
+		String marca = txtMarca.getText();
+		boolean nuevo = determinarBooleano(choiceBoxNuevo.getValue());
+		int modelo = Integer.parseInt(txtModelo.getText());
+		int cantidadCambios = Integer.parseInt(txtCambios.getText());
+		int velocidadMaxima = Integer.parseInt(txtVelocidadMaxima.getText());
+		int cilindraje = Integer.parseInt(txtCilindraje.getText());
+		String placa = txtPlaca.getText();
+		String rutaImagen = txtRutaImagen.getText();
+		TipoTransmision tipoTransmision = determinarTipoTransmision(choiceBoxTipoTransmision.getValue());
+		TipoCombustible tipoCombustible= determinarTipoCombustible(choiceBoxTipoCombustible.getValue());
+		Double precio = Double.valueOf(txtPrecioCompra.getText());
+		int numeroPasajeros = Integer.parseInt(txtNumeroPasajeros.getText());
+		int numeroPuertas = Integer.parseInt(txtNumeroPuertas.getText());
+		int bolsasAire = Integer.parseInt(txtBolsasAire.getText());
+		boolean aireAcondicionado = determinarBooleano(choiceBoxAireAcondicionadoSafeFamily.getValue());
+		boolean camaraReversa = determinarBooleano(choiceBoxCamaraReversaSafeFamily.getValue());
+		boolean frenoABS = determinarBooleano(choiceBoxFrenoABSSafeFamily.getValue());
+		int capacidadMaletero = Integer.parseInt(txtCapacidadMaletero.getText());
+		boolean velocidadCrucero = determinarBooleano(choiceBoxVelocidadCrecuero.getValue());
+		boolean sensorColision = determinarBooleano(choiceBoxSensorColision.getValue());
+		boolean sensorTraficoCruzado = determinarBooleano(choiceBoxSensorTraficoCruzado.getValue());
+		boolean permanenciaCarril = determinarBooleano(choiceBoxPermanenciaCarrirl.getValue());
+
+
+		if (validarDatosGeneralidades() && validarDatosAutomovil()&& validarDatosSafeFamily()&& validarDatosVan() && validarDatosSedan()){
+    		try {
+				Vehiculo x = new Sedan(marca, nuevo, modelo, cantidadCambios, velocidadMaxima, cilindraje, placa, rutaImagen, tipoTransmision, tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa, frenoABS, capacidadMaletero, velocidadCrucero,sensorColision, sensorTraficoCruzado, permanenciaCarril, precio);
+				singleton.agregarVehiculo(x);
+				singleton.crearAlerta("Vehiculo Registrado",null,"ha registrado un vehiculo con exito", AlertType.INFORMATION);
+
+			} catch (NumberFormatException e) {
+				singleton.crearAlerta("Error Formato", null, "verifique que el formato sea correcto",
+						AlertType.ERROR);
+			}
+    	}
+
+	}
+
+	private boolean validarDatosSedan() {
+		String notificacion = "";
+		if ( choiceBoxVelocidadCrecuero.getValue()==null){
+			notificacion = "Campos llenos";
+		}
+		if(choiceBoxSensorColision.getValue()== null){
+			notificacion = "Campos llenos";
+		}
+		if (choiceBoxSensorTraficoCruzado.getValue()==null){
+			notificacion = "Campos llenos";
+		}
+		if(choiceBoxPermanenciaCarrirl.getValue()==null){
+			notificacion = "Campos llenos";
+		}
+		if (notificacion.equals("")){
+			return true;
+		}
+		return false;
+	}
+
+	private void agregarVan(){
+		String marca = txtMarca.getText();
+		boolean nuevo = determinarBooleano(choiceBoxNuevo.getValue());
+		int modelo = Integer.parseInt(txtModelo.getText());
+		int cantidadCambios = Integer.parseInt(txtCambios.getText());
+		int velocidadMaxima = Integer.parseInt(txtVelocidadMaxima.getText());
+		int cilindraje = Integer.parseInt(txtCilindraje.getText());
+		String placa = txtPlaca.getText();
+		String rutaImagen = txtRutaImagen.getText();
+		TipoTransmision tipoTransmision = determinarTipoTransmision(choiceBoxTipoTransmision.getValue());
+		TipoCombustible tipoCombustible= determinarTipoCombustible(choiceBoxTipoCombustible.getValue());
+		Double precio = Double.valueOf(txtPrecioCompra.getText());
+		int numeroPasajeros = Integer.parseInt(txtNumeroPasajeros.getText());
+		int numeroPuertas = Integer.parseInt(txtNumeroPuertas.getText());
+		int bolsasAire = Integer.parseInt(txtBolsasAire.getText());
+		boolean aireAcondicionado = determinarBooleano(choiceBoxAireAcondicionadoSafeFamily.getValue());
+		boolean camaraReversa = determinarBooleano(choiceBoxCamaraReversaSafeFamily.getValue());
+		boolean frenoABS = determinarBooleano(choiceBoxFrenoABSSafeFamily.getValue());
+		int capacidadMaletero = Integer.parseInt(txtCapacidadMaletero.getText());
+
+
+		if (validarDatosGeneralidades() && validarDatosAutomovil()&& validarDatosSafeFamily()&& validarDatosVan()){
+    		try {
+				Vehiculo x = new Van(marca, nuevo, modelo, cantidadCambios, velocidadMaxima, cilindraje, placa, rutaImagen, tipoTransmision, tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa, frenoABS, capacidadMaletero, precio);
+				singleton.agregarVehiculo(x);
+				singleton.crearAlerta("Vehiculo Registrado",null,"ha registrado un vehiculo con exito", AlertType.INFORMATION);
+
+			} catch (NumberFormatException e) {
+				singleton.crearAlerta("Error Formato", null, "verifique que el formato sea correcto",
+						AlertType.ERROR);
+			}
+    	}
+
+	}
+
+	private boolean validarDatosVan() {
+		if(txtCapacidadMaletero.getText().equals("")||txtCapacidadMaletero.getText()==null){
+			return true;
+		}return false;
+	}
+
+	@FXML
     void guardarPickUp(ActionEvent event) {
+		String marca = txtMarca.getText();
+		boolean nuevo = determinarBooleano(choiceBoxNuevo.getValue());
+		int modelo = Integer.parseInt(txtModelo.getText());
+		int cantidadCambios = Integer.parseInt(txtCambios.getText());
+		int velocidadMaxima = Integer.parseInt(txtVelocidadMaxima.getText());
+		int cilindraje = Integer.parseInt(txtCilindraje.getText());
+		String placa = txtPlaca.getText();
+		String rutaImagen = txtRutaImagen.getText();
+		TipoTransmision tipoTransmision = determinarTipoTransmision(choiceBoxTipoTransmision.getValue());
+		TipoCombustible tipoCombustible= determinarTipoCombustible(choiceBoxTipoCombustible.getValue());
+		Double precio = Double.valueOf(txtPrecioCompra.getText());
+		int numeroPasajeros = Integer.parseInt(txtNumeroPasajeros.getText());
+		int numeroPuertas = Integer.parseInt(txtNumeroPuertas.getText());
+		int bolsasAire = Integer.parseInt(txtBolsasAire.getText());
+		boolean aireAcondicionado = determinarBooleano(choiceBoxAireAcondicionadoSafeFamily.getValue());
+		boolean camaraReversa = determinarBooleano(choiceBoxCamaraReversaSafeFamily.getValue());
+		boolean frenoABS = determinarBooleano(choiceBoxFrenoABSSafeFamily.getValue());
+		int capacidadCarga = Integer.parseInt(txtCapacidadCarga.getText());
+		boolean is4x4 = determinarBooleano(choiceBox4X4PickUp.getValue());
 
+		if (validarDatosGeneralidades() && validarDatosAutomovil()&& validarDatosSafeFamily()&& validarDatosPickUp()){
+    		try {
+				Vehiculo x = new PickUp(marca, nuevo, modelo, cantidadCambios, velocidadMaxima, cilindraje, placa, rutaImagen, tipoTransmision, tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa, frenoABS, capacidadCarga, is4x4, precio);
+				singleton.agregarVehiculo(x);
+				singleton.crearAlerta("Vehiculo Registrado",null,"ha registrado un vehiculo con exito", AlertType.INFORMATION);
+
+			} catch (NumberFormatException e) {
+				singleton.crearAlerta("Error Formato", null, "verifique que el formato sea correcto",
+						AlertType.ERROR);
+			}
+    	}
     }
+
+	private boolean validarDatosPickUp() {
+		String notificacion = "";
+		if(txtCapacidadCarga.getText().equals("")||txtCapacidadCarga.getText()==null){
+			notificacion = "Campos llenos";
+		}
+		if (choiceBox4X4PickUp.getValue()==null){
+			notificacion = "Campos llenos";
+		}
+		if(notificacion.equals("")){
+			return true;
+		}
+		return false;
+	}
+
+	private boolean validarDatosSafeFamily() {
+		String notificacion = "";
+		if(choiceBoxAireAcondicionadoSafeFamily.getValue()== null){
+			notificacion = "Campos llenos";
+		}
+		if(choiceBoxCamaraReversaSafeFamily.getValue()== null){
+			notificacion = "Campos llenos";
+		}
+		if(choiceBoxFrenoABSSafeFamily.getValue()==null){
+			notificacion = "Campos llenos";
+		}
+		if(notificacion.equals("")){
+			return true;
+		}
+		return false;
+	}
 
 }

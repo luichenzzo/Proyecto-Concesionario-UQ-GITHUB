@@ -41,6 +41,7 @@ public class LoginController implements Initializable{
 
     @FXML
     void cambiarContraseña(ActionEvent event) {
+    	System.out.println("...");
     	String doc = JOptionPane.showInputDialog("Por favor Ingrese su cedula");
     	Empleado empleado = singleton.obtenerEmpleadoIngreso(doc);
     	String codigo = singleton.forgotPassword(empleado.getEmail());
@@ -54,7 +55,7 @@ public class LoginController implements Initializable{
 
 	@FXML
 	void iniciarSesion(ActionEvent event) {
-
+		System.out.println("SEXO");
 		if (singleton.verificarCamposLlenos(txtContraseña, txtUsuario)) {
 
 			String identificacion = txtUsuario.getText();

@@ -19,14 +19,6 @@ public class Singleton {
 	private static Singleton instancia = null;
 	private Concesionario concesionario;
 
-		public void quemarDato(){
-		TipoTransmision tipotransmision = TipoTransmision.MANUAL;
-		TipoCombustible tipoCombustible = new Diesel();
-		double precio = 500000;
-		Vehiculo vehiculo = new Vehiculo("Mazda",false,2020,5,200,1200,"PUZ94E",null,tipotransmision, tipoCombustible,precio);
-		concesionario.getListaVehiculos().add(vehiculo);
-
-	}
 	/**
 	 * El constructor se defien como privado para que ninguna otra clase pueda crear un obejto del Singleton
 	 * ademas, se crea la instancia del modelo, es asi como el Singleton es la conexion directa con la clase
@@ -142,6 +134,7 @@ public class Singleton {
 		return FXCollections.observableArrayList(concesionario.getListaVehiculos());
 	}
 
+
 	public void generarPdf(){
 		/*
 		 * temp testing method
@@ -167,7 +160,6 @@ public class Singleton {
 		return GenerarReporte.GenerarReporteString(arrayOperaciones);
 	}
 	public String forgotPassword(String email) {
-		// TODO Auto-generated method stub
 		return concesionario.forgotPassword(email);
 	}
 	public void cambiarContraseña(Empleado empleado, String newPassword) {
@@ -176,4 +168,6 @@ public class Singleton {
 	}
 
 
+
 }
+
