@@ -1,5 +1,7 @@
 package co.edu.uniquindio.ConcesionarioUQ.controllers;
 
+import java.util.ArrayList;
+
 import co.edu.uniquindio.ConcesionarioUQ.model.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -140,6 +142,30 @@ public class Singleton {
 		return FXCollections.observableArrayList(concesionario.getListaVehiculos());
 	}
 
+	public void generarPdf(){
+		/*
+		 * temp testing method
+		 */
+		ArrayList<DetalleOperaion> detallesOperaciones = new ArrayList<>();
+		Hibrido hibrido = new Hibrido(false, true);
+    	Vehiculo vehiculo = new Vehiculo ("mazda", false, 2015, 7, 315, 990, "jhiu12", "rutaImagen", TipoTransmision.MANUAL, hibrido,25000);
+    	detallesOperaciones.add(new DetalleOperaion(227.0,vehiculo));
+		ArrayList<Operacion> arrayOperaciones = new ArrayList<>();
+		Empleado empleado = new Empleado();
+		arrayOperaciones.add(new OperacionCompra("19", "109203901", 100000.0, detallesOperaciones, empleado ));
+		concesionario.setListaOperaciones(arrayOperaciones);
+		GenerarReporte.generarPDFConOperaciones(concesionario);
+	}
+	public String generarReporte(){
+		ArrayList<DetalleOperaion> detallesOperaciones = new ArrayList<>();
+		Hibrido hibrido = new Hibrido(false, true);
+    	Vehiculo vehiculo = new Vehiculo ("mazda", false, 2015, 7, 315, 990, "jhiu12", "rutaImagen", TipoTransmision.MANUAL, hibrido,25000);
+    	detallesOperaciones.add(new DetalleOperaion(227.0,vehiculo));
+		ArrayList<Operacion> arrayOperaciones = new ArrayList<>();
+		Empleado empleado = new Empleado();
+		arrayOperaciones.add(new OperacionCompra("19", "109203901", 100000.0, detallesOperaciones, empleado ));
+		return GenerarReporte.GenerarReporteString(arrayOperaciones);
+	}
 
 
 }

@@ -5,5 +5,6 @@
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/pedro/Downloads/javax.mail.jar"/>
 	<classpathentry kind="lib" path="C:/Users/pedro/OneDrive/Escritorio/LibreriaCorreo/activation-jaf1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/itextpdf-5.5.13.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

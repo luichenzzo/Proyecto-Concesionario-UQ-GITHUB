@@ -26,6 +26,9 @@ public class VentanaPrincipalAdministradorController implements Initializable{
     private Button btnRegistrarEmpleado;
 
     @FXML
+    private Button btnReport;
+
+    @FXML
     private Button btnVolverVentanaPrincipal;
 
     @FXML
@@ -42,6 +45,11 @@ public class VentanaPrincipalAdministradorController implements Initializable{
     void abrirVentanaRegistroEmpleado(ActionEvent event) {
 
     	aplicacion.abrirVentanaRegistroEmpleado(panelVariable);
+    }
+
+    @FXML
+    void handleReport(ActionEvent event){
+    	aplicacion.abrirVentanaReporte(panelVariable);
     }
 
 	@Override

@@ -231,4 +231,21 @@ public class Aplicacion extends Application {
 		}
 
 	}
+
+	public void abrirVentanaReporte(Pane panelVariable) {
+		try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/ConcesionarioUQ/views/VentanaReporteOperaciones.fxml"));
+            Parent root = loader.load();
+            RegistroEmpleadosController x = loader.getController();
+
+            AnchorPane paneEnBlanco = new AnchorPane();
+            paneEnBlanco.getChildren().add(root);
+
+            panelVariable.getChildren().clear();
+
+            panelVariable.getChildren().add(paneEnBlanco);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
 }

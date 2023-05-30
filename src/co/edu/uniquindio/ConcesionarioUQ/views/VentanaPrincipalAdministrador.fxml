@@ -20,6 +20,7 @@
             </Label>
             <Separator layoutX="27.0" layoutY="63.0" prefWidth="200.0" />
             <Button fx:id="btnVolverVentanaPrincipal" layoutX="44.0" layoutY="576.0" mnemonicParsing="false" onAction="#volverVentanaPrincipal" prefHeight="25.0" prefWidth="168.0" text="Volver" />
+            <Button fx:id="btnReport" layoutX="43.0" layoutY="132.0" mnemonicParsing="false" onAction="#handleReport" prefHeight="25.0" prefWidth="168.0" text="Generar Reporte" />
          </children>
       </Pane>
    </children>
