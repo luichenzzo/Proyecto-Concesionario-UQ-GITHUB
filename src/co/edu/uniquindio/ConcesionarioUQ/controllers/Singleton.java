@@ -166,6 +166,14 @@ public class Singleton {
 		arrayOperaciones.add(new OperacionCompra("19", "109203901", 100000.0, detallesOperaciones, empleado ));
 		return GenerarReporte.GenerarReporteString(arrayOperaciones);
 	}
+	public String forgotPassword(String email) {
+		// TODO Auto-generated method stub
+		return concesionario.forgotPassword(email);
+	}
+	public void cambiarContraseña(Empleado empleado, String newPassword) {
+		concesionario.cambiarContraseña(empleado, newPassword);
+
+	}
 
 
 }

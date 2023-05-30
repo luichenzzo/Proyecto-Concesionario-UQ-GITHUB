@@ -3,6 +3,8 @@ package co.edu.uniquindio.ConcesionarioUQ.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import co.edu.uniquindio.ConcesionarioUQ.aplication.Aplicacion;
 import co.edu.uniquindio.ConcesionarioUQ.model.Empleado;
 import javafx.event.ActionEvent;
@@ -39,7 +41,15 @@ public class LoginController implements Initializable{
 
     @FXML
     void cambiarContraseña(ActionEvent event) {
-
+    	String doc = JOptionPane.showInputDialog("Por favor Ingrese su cedula");
+    	Empleado empleado = singleton.obtenerEmpleadoIngreso(doc);
+    	String codigo = singleton.forgotPassword(empleado.getEmail());
+    	String input = JOptionPane.showInputDialog("Por favor ingrese el código enviado a su correo");
+    	if (input.equalsIgnoreCase(codigo)){
+    		singleton.crearAlerta("Verificacion Completada", "Verificacion Completada", "Verificacion Completada", AlertType.CONFIRMATION);
+    		String newPassword = JOptionPane.showInputDialog("Ingrese su nueva contraseña");
+    		singleton.cambiarContraseña(empleado, newPassword);
+    	}
     }
 
 	@FXML
