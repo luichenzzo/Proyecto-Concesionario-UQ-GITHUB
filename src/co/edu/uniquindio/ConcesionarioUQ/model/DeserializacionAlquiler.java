@@ -9,34 +9,9 @@ import java.io.EOFException;
 
 public class DeserializacionAlquiler {
 
-    public static void main(String[] args) {
-        List<OperacionAlquiler> alquileres = obtenerAlquilerSerializados();
-
-        // Utiliza los datos de las alquileres deserializados, cambiar por datos interfaz
-        for (OperacionAlquiler alquiler : alquileres) {
-            System.out.println("fecha: " + alquiler.getFecha());
-            System.out.println("codigo operacion: " + alquiler.getCodigoOperacion());
-            System.out.println("Total: " + alquiler.getTotal());
-            System.out.println("detalles Operacion:");
-            List<DetalleOperacion> detalles = alquiler.getListaDetalles();
-            if (detalles.isEmpty()) {
-                System.out.println("  No hay detalles disponibles.");
-            } else {
-                for (DetalleOperacion detalle : detalles) {
-                    System.out.println("  - " + detalle);
-                }
-            }
-            System.out.println("Empleado: " + alquiler.getEmpleado());
-            System.out.println("Cliente: " + alquiler.getCliente());
-            System.out.println("dias alquiler: " + alquiler.getDiasAlquiler());
-            System.out.println("valor dia: " + alquiler.getValordia());
-            System.out.println("--------------------");
-        }
-    }
 
     private static List<OperacionAlquiler> obtenerAlquilerSerializados() {
-        List<OperacionAlquiler> alquileres = new ArrayList<>();
-
+    	List<OperacionAlquiler> alquileres = new ArrayList<>();
         try {
             FileInputStream fileIn = new FileInputStream("operacionAlquiler.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);

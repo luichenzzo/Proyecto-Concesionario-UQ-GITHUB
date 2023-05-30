@@ -9,11 +9,8 @@ import java.util.List;
 //Revisar
 public class SerializacionDetalleOperacion{
 	//instanciar detalle operacion
-    public static void main(String[] args) {
-    	Hibrido hibrido = new Hibrido(false, true);
-    	Vehiculo vehiculo = new Vehiculo ("mazda", false, 2015, 7, 315, 990, "jhiu12", "rutaImagen", TipoTransmision.MANUAL, hibrido);
-        List<DetalleOperacion> detallesOperacion = new ArrayList<DetalleOperacion>();
-        detallesOperacion.add(new DetalleOperacion(297.5, vehiculo ));
+    public static void SerializarOperaciones(List<DetalleOperacion> detallesOperacion) {
+
         try {
             FileOutputStream fileOut = new FileOutputStream("DetalleOperacion.ser"); // Nombre del archivo donde se guardará el objeto
             ObjectOutputStream out = new ObjectOutputStream(fileOut);

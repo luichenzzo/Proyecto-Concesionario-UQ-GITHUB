@@ -10,19 +10,9 @@ import java.io.EOFException;
 
 public class DeserializacionDetalleOperacion {
 
-    public static void main(String[] args) {
-        List<DetalleOperacion> detalleOperaciones = obtenerDetallesSerializados();
-
-        // Utiliza los datos de las ventas deserializados
-        for (DetalleOperacion operacion : detalleOperaciones) {
-            System.out.println("subTotal: " + operacion.getSubTotal());
-            System.out.println("vehiculo: " + operacion.getVehiculo());
-        }
-    }
 
     private static List<DetalleOperacion> obtenerDetallesSerializados() {
-        List<DetalleOperacion> detalles = new ArrayList<>();
-
+    	List<DetalleOperacion> detalles = new ArrayList<>();
         try {
             FileInputStream fileIn = new FileInputStream("DetalleOperacion.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);

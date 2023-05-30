@@ -9,31 +9,8 @@ import java.io.EOFException;
 
 public class DeserializacionCompra {
 
-    public static void main(String[] args) {
-        List<OperacionCompra> compras = obtenerComprasSerializados();
-
-        // Utiliza los datos de las compras deserializados
-        for (OperacionCompra compra : compras) {
-            System.out.println("fecha: " + compra.getFecha());
-            System.out.println("codigo operacion: " + compra.getCodigoOperacion());
-            System.out.println("Total: " + compra.getTotal());
-            System.out.println("detalles Operacion:");
-            List<DetalleOperacion> detalles = compra.getListaDetalles();
-            if (detalles.isEmpty()) {
-                System.out.println("  No hay detalles disponibles.");
-            } else {
-                for (DetalleOperacion detalle : detalles) {
-                    System.out.println("  - " + detalle);
-                }
-            }
-            System.out.println("Empleado: " + compra.getEmpleado());
-            System.out.println("--------------------");
-        }
-    }
-
     private static List<OperacionCompra> obtenerComprasSerializados() {
-        List<OperacionCompra> compras = new ArrayList<>();
-
+    	List<OperacionCompra> compras = new ArrayList<>();
         try {
             FileInputStream fileIn = new FileInputStream("operacionCompra.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
