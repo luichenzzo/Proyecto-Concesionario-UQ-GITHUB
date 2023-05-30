@@ -150,4 +150,8 @@ public class Concesionario {
 		listaProveedores.add(proveedor);
 
 	}
+
+	public void agregarVehiculo(Vehiculo vehiculo) {
+		listaVehiculos.add(vehiculo);
+	}
 }

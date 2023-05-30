@@ -8,18 +8,15 @@ public class Deportivo extends Automovil {
 	public Deportivo(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
 			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
 			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire,
-			Integer caballosFuerzas, Integer tiempo100kmh) {
+			Integer caballosFuerzas, Integer tiempo100kmh, Double precio) {
 		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
-				tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire);
+				tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, precio);
 		this.caballosFuerzas = caballosFuerzas;
 		this.tiempo100kmh = tiempo100kmh;
 	}
 
-	public Deportivo(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
-			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
-			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire) {
-		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
-				tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire);
+	public Deportivo() {
+		super();
 	}
 
 	public Integer getCaballosFuerzas() {

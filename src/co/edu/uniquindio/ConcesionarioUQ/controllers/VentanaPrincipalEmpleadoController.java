@@ -86,6 +86,7 @@ public class VentanaPrincipalEmpleadoController implements Initializable{
 
     @FXML
     void comprarVehiculo(ActionEvent event) {
+    	aplicacion.abrirVentanaCompraVehiculo(panelVariable);
 
     }
 
@@ -102,7 +103,7 @@ public class VentanaPrincipalEmpleadoController implements Initializable{
 
     @FXML
     void venderVehiculo(ActionEvent event) {
-
+    	aplicacion.abrirVentanaVenderVehiculo(panelVariable);
     }
 
     @FXML

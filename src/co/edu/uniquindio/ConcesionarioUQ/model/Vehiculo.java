@@ -5,27 +5,29 @@ public class Vehiculo {
 	private Boolean nuevo;
 	private Integer modelo;
 	private Integer cantidadCambios;
-	private Integer velocidadMáxima;
+	private Integer velocidadMaxima;
 	private Integer cilindraje;
 	private String placa;
 	private String rutaImagen;
 	private TipoTransmision tipoTransmision;
 	private TipoCombustible tipoCombustible;
+	private Double precio;
 
 	public Vehiculo(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
 			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
-			TipoCombustible tipoCombustible) {
+			TipoCombustible tipoCombustible, double precio) {
 		super();
 		this.marca = marca;
 		this.nuevo = nuevo;
 		this.modelo = modelo;
 		this.cantidadCambios = cantidadCambios;
-		this.velocidadMáxima = velocidadMáxima;
+		this.velocidadMaxima = velocidadMáxima;
 		this.cilindraje = cilindraje;
 		this.placa = placa;
 		this.rutaImagen = rutaImagen;
 		this.tipoTransmision = tipoTransmision;
 		this.tipoCombustible = tipoCombustible;
+		this.precio = precio;
 	}
 
 	public Vehiculo() {
@@ -65,11 +67,11 @@ public class Vehiculo {
 	}
 
 	public Integer getVelocidadMáxima() {
-		return velocidadMáxima;
+		return velocidadMaxima;
 	}
 
 	public void setVelocidadMáxima(Integer velocidadMáxima) {
-		this.velocidadMáxima = velocidadMáxima;
+		this.velocidadMaxima = velocidadMáxima;
 	}
 
 	public Integer getCilindraje() {
@@ -140,7 +142,7 @@ public class Vehiculo {
 	@Override
 	public String toString() {
 		return "Vehiculo [marca=" + marca + ", nuevo=" + nuevo + ", modelo=" + modelo + ", cantidadCambios="
-				+ cantidadCambios + ", velocidadMáxima=" + velocidadMáxima + ", cilindraje=" + cilindraje + ", placa="
+				+ cantidadCambios + ", velocidadMáxima=" + velocidadMaxima + ", cilindraje=" + cilindraje + ", placa="
 				+ placa + ", rutaImagen=" + rutaImagen + ", tipoTransmision=" + tipoTransmision + "]";
 	}
 }

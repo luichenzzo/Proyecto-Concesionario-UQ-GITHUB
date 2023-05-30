@@ -11,9 +11,9 @@ public class Camion extends Vehiculo {
 	public Camion(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
 			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
 			TipoCombustible tipoCombustible, boolean aireAcondicionado, boolean frenosABS, Integer numeroEjes,
-			boolean frenoAire, String tipoCamion) {
+			boolean frenoAire, String tipoCamion,Double precio) {
 		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
-				tipoCombustible);
+				tipoCombustible, precio);
 		this.aireAcondicionado = aireAcondicionado;
 		this.frenosABS = frenosABS;
 		this.numeroEjes = numeroEjes;
@@ -21,11 +21,8 @@ public class Camion extends Vehiculo {
 		this.tipoCamion = tipoCamion;
 	}
 
-	public Camion(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
-			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
-			TipoCombustible tipoCombustible) {
-		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
-				tipoCombustible);
+	public Camion() {
+		super();
 	}
 
 	public boolean isAireAcondicionado() {

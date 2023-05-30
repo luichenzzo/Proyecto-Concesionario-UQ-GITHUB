@@ -8,20 +8,15 @@ public class Van extends SafeFamily{
 	public Van(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
 			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
 			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire,
-			boolean aireAcondicionado, boolean camaraReversa, boolean frenoABS, Integer capacidadMaletero) {
+			boolean aireAcondicionado, boolean camaraReversa, boolean frenoABS, Integer capacidadMaletero, Double precio) {
 		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
 				tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa,
-				frenoABS);
+				frenoABS, precio);
 		this.capacidadMaletero = capacidadMaletero;
 	}
 
-	public Van(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
-			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
-			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire,
-			boolean aireAcondicionado, boolean camaraReversa, boolean frenoABS) {
-		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
-				tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa,
-				frenoABS);
+	public Van() {
+		super();
 	}
 
 	public Integer getCapacidadMaletero() {

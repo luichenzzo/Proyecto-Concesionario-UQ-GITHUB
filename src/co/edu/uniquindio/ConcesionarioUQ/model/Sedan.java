@@ -12,23 +12,18 @@ public class Sedan  extends Van{
 			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire,
 			boolean aireAcondicionado, boolean camaraReversa, boolean frenoABS, Integer capacidadMaletero,
 			boolean velocidadCrucero, boolean sensoresColision, boolean sensorTraficoCruzado,
-			boolean permanenciaCarril) {
+			boolean permanenciaCarril, Double precio) {
 		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
 				tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa, frenoABS,
-				capacidadMaletero);
+				capacidadMaletero, precio);
 		this.velocidadCrucero = velocidadCrucero;
 		this.sensoresColision = sensoresColision;
 		this.sensorTraficoCruzado = sensorTraficoCruzado;
 		this.permanenciaCarril = permanenciaCarril;
 	}
 
-	public Sedan(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
-			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
-			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire,
-			boolean aireAcondicionado, boolean camaraReversa, boolean frenoABS, Integer capacidadMaletero) {
-		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
-				tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa, frenoABS,
-				capacidadMaletero);
+	public Sedan() {
+		super();
 	}
 
 	public boolean isVelocidadCrucero() {

@@ -5,25 +5,21 @@ public class PickUp extends SafeFamily {
 	private Integer capacidadCajaCarga;
 	private boolean is4x4;
 
-	public PickUp(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
-			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
-			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire,
-			boolean aireAcondicionado, boolean camaraReversa, boolean frenoABS, Integer capacidadCajaCarga,
-			boolean is4x4) {
-		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
-				tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa,
-				frenoABS);
-		this.capacidadCajaCarga = capacidadCajaCarga;
-		this.is4x4 = is4x4;
-	}
 
 	public PickUp(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
 			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
 			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire,
-			boolean aireAcondicionado, boolean camaraReversa, boolean frenoABS) {
+			boolean aireAcondicionado, boolean camaraReversa, boolean frenoABS, Integer capacidadCajaCarga,
+			boolean is4x4, Double precio) {
 		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
 				tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa,
-				frenoABS);
+				frenoABS, precio);
+		this.capacidadCajaCarga = capacidadCajaCarga;
+		this.is4x4 = is4x4;
+	}
+
+	public PickUp() {
+		super();
 	}
 
 	public Integer getCapacidadCajaCarga() {

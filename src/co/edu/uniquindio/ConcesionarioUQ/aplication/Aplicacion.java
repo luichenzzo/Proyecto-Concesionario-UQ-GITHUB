@@ -2,14 +2,18 @@ package co.edu.uniquindio.ConcesionarioUQ.aplication;
 
 import java.io.IOException;
 
+import co.edu.uniquindio.ConcesionarioUQ.controllers.ComprarVehiculoController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.LoginController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.RegistroClientesController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.RegistroEmpleadosController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.RegistroProveedorController;
+import co.edu.uniquindio.ConcesionarioUQ.controllers.VenderVehiculoController;
+import co.edu.uniquindio.ConcesionarioUQ.controllers.VentanaDetallesVehiculoController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.VentanaPrincipalAdministradorController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.VentanaPrincipalEmpleadoController;
 import co.edu.uniquindio.ConcesionarioUQ.model.Administrador;
 import co.edu.uniquindio.ConcesionarioUQ.model.Empleado;
+import co.edu.uniquindio.ConcesionarioUQ.model.Vehiculo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +25,7 @@ import javafx.stage.Stage;
 public class Aplicacion extends Application {
 
 	private Stage primaryStage;
+	private Stage escenarioSecundario;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -29,6 +34,7 @@ public class Aplicacion extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
+		this.escenarioSecundario = escenarioSecundario;
 		mostrarVentanaPrincipal();
 
 	}
@@ -167,6 +173,62 @@ public class Aplicacion extends Application {
             e.printStackTrace();
         }
 
+
+	}
+
+	public void abrirVentanaCompraVehiculo(Pane panelVariable) {
+
+		try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/ConcesionarioUQ/views/ComprarVehiculoView.fxml"));
+            Parent root = loader.load();
+            ComprarVehiculoController x = loader.getController();
+
+            AnchorPane paneEnBlanco = new AnchorPane();
+            paneEnBlanco.getChildren().add(root);
+            panelVariable.getChildren().clear();
+
+            panelVariable.getChildren().add(paneEnBlanco);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+	}
+
+	public void abrirVentanaVenderVehiculo(Pane panelVariable) {
+
+		try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/ConcesionarioUQ/views/VenderVehiculoView.fxml"));
+            Parent root = loader.load();
+            VenderVehiculoController x = loader.getController();
+
+            AnchorPane paneEnBlanco = new AnchorPane();
+            paneEnBlanco.getChildren().add(root);
+            panelVariable.getChildren().clear();
+
+            panelVariable.getChildren().add(paneEnBlanco);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+	}
+
+	public void abrirVentanaDetallesVehiculo(Vehiculo vehiculo) {
+		escenarioSecundario.close();
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/ConcesionarioUQ/views/VentanaDetallesVehiculo.fxml"));
+			AnchorPane anchorPane = (AnchorPane) loader.load();
+			VentanaDetallesVehiculoController x = loader.getController();
+			x.setVehiculo(vehiculo);
+			x.setAplication(this);
+
+			Scene scene = new Scene(anchorPane);
+			escenarioSecundario.setScene(scene);
+			escenarioSecundario.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 }

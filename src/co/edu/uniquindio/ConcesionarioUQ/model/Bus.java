@@ -9,21 +9,16 @@ public class Bus  extends Van{
 			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
 			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire,
 			boolean aireAcondicionado, boolean camaraReversa, boolean frenoABS, Integer capacidadMaletero,
-			Integer cantidadEjes, Integer cantidadSalidasEmergencias) {
+			Integer cantidadEjes, Integer cantidadSalidasEmergencias, Double precio) {
 		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
 				tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa, frenoABS,
-				capacidadMaletero);
+				capacidadMaletero, precio);
 		this.cantidadEjes = cantidadEjes;
 		this.cantidadSalidasEmergencias = cantidadSalidasEmergencias;
 	}
 
-	public Bus(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
-			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
-			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire,
-			boolean aireAcondicionado, boolean camaraReversa, boolean frenoABS, Integer capacidadMaletero) {
-		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
-				tipoCombustible, numeroPasajeros, numeroPuertas, bolsasAire, aireAcondicionado, camaraReversa, frenoABS,
-				capacidadMaletero);
+	public Bus() {
+		super();
 	}
 
 	public Integer getCantidadEjes() {

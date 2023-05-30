@@ -8,19 +8,16 @@ public abstract class Automovil extends Vehiculo {
 
 	public Automovil(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
 			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
-			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire) {
+			TipoCombustible tipoCombustible, Integer numeroPasajeros, Integer numeroPuertas, Integer bolsasAire, Double precio) {
 		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
-				tipoCombustible);
+				tipoCombustible,precio);
 		this.numeroPasajeros = numeroPasajeros;
 		this.numeroPuertas = numeroPuertas;
 		this.bolsasAire = bolsasAire;
 	}
 
-	public Automovil(String marca, Boolean nuevo, Integer modelo, Integer cantidadCambios, Integer velocidadMáxima,
-			Integer cilindraje, String placa, String rutaImagen, TipoTransmision tipoTransmision,
-			TipoCombustible tipoCombustible) {
-		super(marca, nuevo, modelo, cantidadCambios, velocidadMáxima, cilindraje, placa, rutaImagen, tipoTransmision,
-				tipoCombustible);
+	public Automovil() {
+		super();
 	}
 
 	public Integer getNumeroPasajeros() {
