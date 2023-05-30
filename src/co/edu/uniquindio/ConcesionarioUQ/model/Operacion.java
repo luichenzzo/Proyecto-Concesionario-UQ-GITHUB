@@ -83,7 +83,7 @@ public abstract class Operacion {
 
 	@Override
 	public String toString() {
-		return "Operacion [fecha=" + fecha + ", codigoOperacion=" + codigoOperacion + ", total=" + total + ", empleado="
-				+ empleado + ", listaDetalles=" + listaDetalles + "]";
+		return "[fecha=" + fecha + "\n codigoOperacion=" + codigoOperacion + "\n total=" + total + "\n empleado="
+				+ empleado + "\n listaDetalles=" + listaDetalles.toString() + "]";
 	}
 }
