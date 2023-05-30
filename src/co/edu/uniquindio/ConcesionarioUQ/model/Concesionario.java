@@ -180,7 +180,7 @@ public class Concesionario {
         String port = "587";
         String username = "ConcesionarioUQPassword@hotmail.com";
         String password = "concesionarioUQ";
-        String imagenUrl = "https://ibb.co/VJ0zjdN";
+        String imagenUrl = "https://i.ibb.co/CmpY1qt/Whats-App-Image-2023-05-24-at-6-31-15-PM.jpg";
 
         try {
             // Propiedades de la conexión
@@ -224,7 +224,7 @@ public class Concesionario {
                     + "<p>Concesionario UQ </p>";
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress());
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(destino));
             message.setContent(htmlBody, "text/html; charset=utf-8");
             message.setHeader("Content-Type", "text/html; charset=utf-8");
             message.setHeader("Content-Transfer-Encoding", "quoted-printable");

@@ -27,7 +27,7 @@ public class Singleton {
 	 */
 	private Singleton(){
 		this.concesionario = new Concesionario();
-		Empleado empleado = new Empleado("", 23, "123", "", "", null, "123");
+		Empleado empleado = new Empleado("", 23, "123", "luichenzzo@gmail.com", "luichenzzo@gmail.com", null, "123");
 		concesionario.getListaEmpleado().add(empleado);
 
 	}
