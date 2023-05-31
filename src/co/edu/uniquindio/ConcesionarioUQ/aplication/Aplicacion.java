@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 public class Aplicacion extends Application {
 
 	private Stage primaryStage;
-	private Stage escenarioSecundario;
+	private Stage secondaryStage;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -34,10 +34,11 @@ public class Aplicacion extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		this.escenarioSecundario = escenarioSecundario;
+		this.secondaryStage= secondaryStage;
 		mostrarVentanaPrincipal();
 
 	}
+
 
 	private void mostrarVentanaPrincipal()   {
 		try {
@@ -213,25 +214,6 @@ public class Aplicacion extends Application {
 
 	}
 
-	public void abrirVentanaDetallesVehiculo(Vehiculo vehiculo) {
-		escenarioSecundario.close();
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/ConcesionarioUQ/views/VentanaDetallesVehiculo.fxml"));
-			AnchorPane anchorPane = (AnchorPane) loader.load();
-			VentanaDetallesVehiculoController x = loader.getController();
-			x.setVehiculo(vehiculo);
-			x.setAplication(this);
-
-			Scene scene = new Scene(anchorPane);
-			escenarioSecundario.setScene(scene);
-			escenarioSecundario.show();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-
 	public void abrirVentanaReporte(Pane panelVariable) {
 		try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/ConcesionarioUQ/views/VentanaReporteOperaciones.fxml"));
@@ -247,5 +229,22 @@ public class Aplicacion extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+	}
+
+	public void mostrarVentanaDetalleVehiculo() {
+
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/ConcesionarioUQ/views/VentanaDetallesVehiculoView.fxml"));
+			AnchorPane anchorPane = (AnchorPane) loader.load();
+			VentanaDetallesVehiculoController x = loader.getController();
+			x.setAplication(this);
+
+			Scene scene = new Scene(anchorPane);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

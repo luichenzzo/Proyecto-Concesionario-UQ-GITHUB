@@ -18,6 +18,7 @@ public class Singleton {
 	 */
 	private static Singleton instancia = null;
 	private Concesionario concesionario;
+	private Vehiculo vehiculo;
 
 	/**
 	 * El constructor se defien como privado para que ninguna otra clase pueda crear un obejto del Singleton
@@ -166,6 +167,17 @@ public class Singleton {
 		concesionario.cambiarContraseña(empleado, newPassword);
 
 	}
+
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
+
+	}
+
+	public Vehiculo getVehiculo() {
+		return vehiculo;
+	}
+
+
 
 
 

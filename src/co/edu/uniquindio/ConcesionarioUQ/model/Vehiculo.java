@@ -30,9 +30,30 @@ public class Vehiculo {
 		this.precio = precio;
 	}
 
+
 	public Vehiculo() {
 		super();
 	}
+
+	public Integer getVelocidadMaxima() {
+		return velocidadMaxima;
+	}
+
+
+	public void setVelocidadMaxima(Integer velocidadMaxima) {
+		this.velocidadMaxima = velocidadMaxima;
+	}
+
+
+	public Double getPrecio() {
+		return precio;
+	}
+
+
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+
 
 	public String getMarca() {
 		return marca;

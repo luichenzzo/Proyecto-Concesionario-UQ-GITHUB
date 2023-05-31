@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.ConcesionarioUQ.aplication.Aplicacion;
+import co.edu.uniquindio.ConcesionarioUQ.model.Cliente;
 import co.edu.uniquindio.ConcesionarioUQ.model.Vehiculo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class VenderVehiculoController implements Initializable{
+public class VenderVehiculoController implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -39,25 +40,38 @@ public class VenderVehiculoController implements Initializable{
     @FXML
     private TableView<Vehiculo> tablaVehiculos;
 
+    @FXML
+    private Button btnComprar;
+
     private Singleton singleton = Singleton.obtenerInstancia();
 
     private Aplicacion aplicacion;
-    @FXML
+
+    private Vehiculo vehiculo;
+
+
+
+    public Vehiculo getVehiculo() {
+		return vehiculo;
+	}
+
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
+	}
+
+	@FXML
     void detalles(ActionEvent event) {
-
-    	Vehiculo vehiculo = this.tablaVehiculos.getSelectionModel().getSelectedItem();
-    	aplicacion.abrirVentanaDetallesVehiculo(vehiculo);
-
+		singleton.setVehiculo(this.tablaVehiculos.getSelectionModel().getSelectedItem());
+    	aplicacion.mostrarVentanaDetalleVehiculo();
     }
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL location, ResourceBundle resources) {
 		this.columnCilindraje.setCellValueFactory(new PropertyValueFactory("cilindraje"));
 		this.columnMarca.setCellValueFactory(new PropertyValueFactory("marca"));
-		this.columnPrecio.setCellValueFactory(new PropertyValueFactory("precio"));
 		this.columnModelo.setCellValueFactory(new PropertyValueFactory("modelo"));
+		this.columnPrecio.setCellValueFactory(new PropertyValueFactory("precio"));
 		refrescarTabla();
-
 
 	}
 
@@ -67,6 +81,9 @@ public class VenderVehiculoController implements Initializable{
 
 	}
 
+	@FXML
+    void comprar(ActionEvent event) {
+
+    }
 
 }
-
