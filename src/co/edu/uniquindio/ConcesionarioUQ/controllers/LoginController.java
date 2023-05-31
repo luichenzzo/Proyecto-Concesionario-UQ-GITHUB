@@ -41,7 +41,6 @@ public class LoginController implements Initializable{
 
     @FXML
     void cambiarContraseña(ActionEvent event) {
-    	System.out.println("...");
     	String doc = JOptionPane.showInputDialog("Por favor Ingrese su cedula");
     	Empleado empleado = singleton.obtenerEmpleadoIngreso(doc);
     	String codigo = singleton.forgotPassword(empleado.getEmail());
@@ -50,6 +49,9 @@ public class LoginController implements Initializable{
     		singleton.crearAlerta("Verificacion Completada", "Verificacion Completada", "Verificacion Completada", AlertType.CONFIRMATION);
     		String newPassword = JOptionPane.showInputDialog("Ingrese su nueva contraseña");
     		singleton.cambiarContraseña(empleado, newPassword);
+    	}
+    	else{
+    		singleton.crearAlerta("Verificacion Fallida", "Verificacion Fallida", "Verificacion Fallida", AlertType.WARNING);
     	}
     }
 

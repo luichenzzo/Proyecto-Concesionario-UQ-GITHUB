@@ -27,7 +27,7 @@ public class Singleton {
 	 */
 	private Singleton(){
 		this.concesionario = new Concesionario();
-		Empleado empleado = new Empleado("", 23, "123", "luichenzzo@gmail.com", "luichenzzo@gmail.com", null, "123");
+		Empleado empleado = new Empleado("Sexito", 23, "123", "katrinad.tellezs@uqvirtual.edu.co", "luichenzzo@gmail.com", null, "123");
 		concesionario.getListaEmpleado().add(empleado);
 
 	}
@@ -146,8 +146,7 @@ public class Singleton {
 		ArrayList<Operacion> arrayOperaciones = new ArrayList<>();
 		Empleado empleado = new Empleado();
 		arrayOperaciones.add(new OperacionCompra("19", "109203901", 100000.0, detallesOperaciones, empleado ));
-		concesionario.setListaOperaciones(arrayOperaciones);
-		GenerarReporte.generarPDFConOperaciones(concesionario);
+		GenerarReporte.generarPDFConOperaciones(arrayOperaciones);
 	}
 	public String generarReporte(){
 		ArrayList<DetalleOperaion> detallesOperaciones = new ArrayList<>();

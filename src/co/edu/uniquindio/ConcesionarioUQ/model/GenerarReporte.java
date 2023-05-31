@@ -11,11 +11,12 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class GenerarReporte {
 
 
-	public static void generarPDFConOperaciones(Concesionario concesionario) {
-	    Document document = new Document();
+	public static void generarPDFConOperaciones(ArrayList<Operacion> arrayOperaciones) {
+	  
 	    try {
+	    	 Document document = new Document();
 	        // Crea un objeto PdfWriter para escribir en el documento
-	        PdfWriter.getInstance(document, new FileOutputStream("Reporte.pdf"));
+	        PdfWriter.getInstance(document, new FileOutputStream("C:/Users/Luich/Downloads/PruebaReportes2/PruebaReportes2/src/varios/Doc1.pdf"));
 
 	        // Abre el documento
 	        document.open();
@@ -24,7 +25,7 @@ public class GenerarReporte {
 	        document.add(new Paragraph("Lista de Operaciones"));
 
 	        // Recorre la lista de operaciones y agrega cada una al documento
-	        for (Operacion operacion : concesionario.getListaOperaciones()) {
+	        for (Operacion operacion : arrayOperaciones) {
 	            document.add(new Paragraph(operacion.toString()));
 	        }
 

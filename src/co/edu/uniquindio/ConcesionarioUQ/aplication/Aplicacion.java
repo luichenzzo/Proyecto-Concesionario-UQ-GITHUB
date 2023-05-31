@@ -11,6 +11,7 @@ import co.edu.uniquindio.ConcesionarioUQ.controllers.VenderVehiculoController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.VentanaDetallesVehiculoController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.VentanaPrincipalAdministradorController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.VentanaPrincipalEmpleadoController;
+import co.edu.uniquindio.ConcesionarioUQ.controllers.VentanaReporteOperacionesController;
 import co.edu.uniquindio.ConcesionarioUQ.model.Administrador;
 import co.edu.uniquindio.ConcesionarioUQ.model.Empleado;
 import co.edu.uniquindio.ConcesionarioUQ.model.Vehiculo;
@@ -236,7 +237,7 @@ public class Aplicacion extends Application {
 		try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/ConcesionarioUQ/views/VentanaReporteOperaciones.fxml"));
             Parent root = loader.load();
-            RegistroEmpleadosController x = loader.getController();
+            VentanaReporteOperacionesController x = loader.getController();
 
             AnchorPane paneEnBlanco = new AnchorPane();
             paneEnBlanco.getChildren().add(root);

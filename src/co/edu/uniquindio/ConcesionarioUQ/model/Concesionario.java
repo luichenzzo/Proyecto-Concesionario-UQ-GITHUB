@@ -219,7 +219,7 @@ public class Concesionario {
                     + "para evitar errores de escritura.</p>"
                     + "<p>Si usted no solicit&oacute esta recuperaci&oacuten de contrase&ntildea, puede ignorar este correo electr&oacutenico. No se realizar&aacuten cambios en su cuenta.</p>"
                     + "<p>Por motivos de seguridad, le sugerimos que una vez que haya restablecido su contrase&ntildea, la modifique por una nueva y segura.</p>"
-                    + "<p>Si necesita asistencia adicional o tiene alguna pregunta, no dude en contactarnos a trav&eacutes de LGZConcessionaire@hotmail.com</p>"
+                    + "<p>Si necesita asistencia adicional o tiene alguna pregunta, no dude en contactarnos a trav&eacutes de ConcesionarioUQPassword@hotmail.com</p>"
                     + "<p>Atentamente,</p>"
                     + "<p>Concesionario UQ </p>";
             MimeMessage message = new MimeMessage(session);

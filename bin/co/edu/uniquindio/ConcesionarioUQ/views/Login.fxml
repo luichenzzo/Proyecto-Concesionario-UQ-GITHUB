@@ -11,7 +11,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.ConcesionarioUQ.controllers.LoginController">
    <children>
       <Pane layoutX="338.0" layoutY="-1.0" prefHeight="507.0" prefWidth="337.0" style="-fx-background-color: #12111F;">
