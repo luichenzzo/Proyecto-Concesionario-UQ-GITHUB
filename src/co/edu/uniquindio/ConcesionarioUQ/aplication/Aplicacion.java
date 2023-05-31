@@ -11,6 +11,7 @@ import co.edu.uniquindio.ConcesionarioUQ.controllers.VenderVehiculoController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.VentanaDetallesVehiculoController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.VentanaPrincipalAdministradorController;
 import co.edu.uniquindio.ConcesionarioUQ.controllers.VentanaPrincipalEmpleadoController;
+import co.edu.uniquindio.ConcesionarioUQ.controllers.VentanaReporteOperacionesController;
 import co.edu.uniquindio.ConcesionarioUQ.model.Administrador;
 import co.edu.uniquindio.ConcesionarioUQ.model.Empleado;
 import co.edu.uniquindio.ConcesionarioUQ.model.Vehiculo;
@@ -25,7 +26,7 @@ import javafx.stage.Stage;
 public class Aplicacion extends Application {
 
 	private Stage primaryStage;
-	private Stage secondaryStage;
+	private Stage escenarioSecundario;
 
 	public static void main(String[] args) {
 		launch(args);
@@ -34,11 +35,10 @@ public class Aplicacion extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		this.secondaryStage= secondaryStage;
+		this.escenarioSecundario = escenarioSecundario;
 		mostrarVentanaPrincipal();
 
 	}
-
 
 	private void mostrarVentanaPrincipal()   {
 		try {
@@ -214,11 +214,31 @@ public class Aplicacion extends Application {
 
 	}
 
+	public void abrirVentanaDetallesVehiculo(Vehiculo vehiculo) {
+		escenarioSecundario.close();
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/ConcesionarioUQ/views/VentanaDetallesVehiculo.fxml"));
+			AnchorPane anchorPane = (AnchorPane) loader.load();
+			VentanaDetallesVehiculoController x = loader.getController();
+			x.setAplication(this);
+			x.setVehiculo(vehiculo);
+			
+
+			Scene scene = new Scene(anchorPane);
+			escenarioSecundario.setScene(scene);
+			escenarioSecundario.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	public void abrirVentanaReporte(Pane panelVariable) {
 		try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/ConcesionarioUQ/views/VentanaReporteOperaciones.fxml"));
             Parent root = loader.load();
-            RegistroEmpleadosController x = loader.getController();
+            	 x = loader.getController();
 
             AnchorPane paneEnBlanco = new AnchorPane();
             paneEnBlanco.getChildren().add(root);
@@ -231,20 +251,4 @@ public class Aplicacion extends Application {
         }
 	}
 
-	public void mostrarVentanaDetalleVehiculo() {
-
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/ConcesionarioUQ/views/VentanaDetallesVehiculoView.fxml"));
-			AnchorPane anchorPane = (AnchorPane) loader.load();
-			VentanaDetallesVehiculoController x = loader.getController();
-			x.setAplication(this);
-
-			Scene scene = new Scene(anchorPane);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 }

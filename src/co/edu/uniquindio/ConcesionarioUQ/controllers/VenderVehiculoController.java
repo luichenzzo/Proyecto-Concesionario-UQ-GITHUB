@@ -61,8 +61,7 @@ public class VenderVehiculoController implements Initializable {
 
 	@FXML
     void detalles(ActionEvent event) {
-		singleton.setVehiculo(this.tablaVehiculos.getSelectionModel().getSelectedItem());
-    	aplicacion.mostrarVentanaDetalleVehiculo();
+    	aplicacion.abrirVentanaDetallesVehiculo(this.tablaVehiculos.getSelectionModel().getSelectedItem());
     }
 
 	@Override
