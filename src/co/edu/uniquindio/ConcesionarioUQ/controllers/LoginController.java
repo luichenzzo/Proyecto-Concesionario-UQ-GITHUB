@@ -39,6 +39,10 @@ public class LoginController implements Initializable{
 
 	private Singleton singleton = Singleton.obtenerInstancia();
 
+	/**
+	 * Metodo que se encarga de preguntarle la identificacion al usuario que olvidó su contraseña
+	 * @param event el boton de cambiar contraseña
+	 */
     @FXML
     void cambiarContraseña(ActionEvent event) {
     	String doc = JOptionPane.showInputDialog("Por favor Ingrese su cedula");
@@ -55,6 +59,11 @@ public class LoginController implements Initializable{
     	}
     }
 
+    /**
+     * metodo que busca la cedula que el usuario ingresó para confirmar si el usuario si existe en la base de datos
+     * para asi dejarlo pasar a la ventana principal
+     * @param event
+     */
 	@FXML
 	void iniciarSesion(ActionEvent event) {
 		System.out.println("SEXO");

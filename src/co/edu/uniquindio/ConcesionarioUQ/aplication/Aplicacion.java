@@ -39,7 +39,9 @@ public class Aplicacion extends Application {
 		mostrarVentanaPrincipal();
 
 	}
-
+	/**
+	 * Metodo que es invocado para mostrar la ventana principal
+	 */
 	private void mostrarVentanaPrincipal()   {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -56,7 +58,9 @@ public class Aplicacion extends Application {
 		}
 
 	}
-
+	/**
+	 * Metodo que es invocado para mostrar la ventana principal del administrador
+	 */
 	public void mostrarVentanaAdministrador(){
 		primaryStage.close();
 		try {
@@ -83,6 +87,9 @@ public class Aplicacion extends Application {
 		this.primaryStage = primaryStage;
 	}
 
+	/**
+	 * Metodo que es invocado para mostrar la ventana que registra a los empleados
+	 */
 	public void abrirVentanaRegistroEmpleado(Pane panelVariable) {
 		try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/ConcesionarioUQ/views/RegistroEmpleadosView.fxml"));
@@ -102,7 +109,9 @@ public class Aplicacion extends Application {
             e.printStackTrace();
         }
 	}
-
+	/**
+	 * Metodo que es invocado para devolver a la ventana principal
+	 */
 	public void volverVentanaPrincipal() {
 
 		primaryStage.close();
@@ -121,7 +130,9 @@ public class Aplicacion extends Application {
 		}
 
 	}
-
+	/**
+	 * Metodo que es invocado para mostrar la ventana principal de empleado
+	 */
 	public void mostrarVentanaEmpleado() {
 
 		primaryStage.close();
@@ -141,7 +152,9 @@ public class Aplicacion extends Application {
 
 
 	}
-
+	/**
+	 * Metodo que es invocado para mostrar la ventana en donde se hace el registro de los clientes
+	 */
 	public void abrirVentanaRegistroCliente(Pane panelVariable) {
 		try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/ConcesionarioUQ/views/RegistroClientesView.fxml"));
@@ -159,6 +172,9 @@ public class Aplicacion extends Application {
 
 	}
 
+	/**
+	 * Metodo que es invocado para mostrar la ventana en donde se puede registrar a los proveedores
+	 */
 	public void abrirVentanaRegistroProveedor(Pane panelVariable) {
 		try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/ConcesionarioUQ/views/RegistroProveedorView.fxml"));
@@ -177,6 +193,10 @@ public class Aplicacion extends Application {
 
 	}
 
+	/**
+	 * Metodo que es invocado para mostrar la ventana en donde se puede
+	 * llenar el formulario para comprar un vehiculo
+	 */
 	public void abrirVentanaCompraVehiculo(Pane panelVariable) {
 
 		try {
@@ -195,6 +215,9 @@ public class Aplicacion extends Application {
 
 	}
 
+	/**
+	 * Metodo que es invocado para mostrar la ventana en donde se venden los vehiculos
+	 */
 	public void abrirVentanaVenderVehiculo(Pane panelVariable) {
 
 		try {
@@ -214,6 +237,10 @@ public class Aplicacion extends Application {
 
 	}
 
+	/**
+	 * Metodo que es invocado para mostrar la ventana donde se muestran las especificaciones del vehiculo
+	 * seleccionado
+	 */
 	public void abrirVentanaDetallesVehiculo(Vehiculo vehiculo) {
 		escenarioSecundario.close();
 		try {
@@ -233,6 +260,9 @@ public class Aplicacion extends Application {
 
 	}
 
+	/**
+	 * Metodo que es invocado para mostrar la ventana con los reportes de ventas
+	 */
 	public void abrirVentanaReporte(Pane panelVariable) {
 		try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/ConcesionarioUQ/views/VentanaReporteOperaciones.fxml"));

@@ -12,7 +12,7 @@ public class GenerarReporte {
 
 
 	public static void generarPDFConOperaciones(ArrayList<Operacion> arrayOperaciones) {
-	  
+
 	    try {
 	    	 Document document = new Document();
 	        // Crea un objeto PdfWriter para escribir en el documento

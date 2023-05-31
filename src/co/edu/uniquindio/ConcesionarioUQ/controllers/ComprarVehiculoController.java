@@ -258,6 +258,9 @@ public class ComprarVehiculoController implements Initializable{
 
 	}
 
+	/**
+	 * Metodo que rellena los choiceBox con las posible opciones
+	 */
     private void llenarChoiceBox() {
 		List<String>listatipoVehiculo = Arrays.asList("Moto","Camión","Deportivo","Pick Up","Van","Sedán","Camioneta","Bus");
 		choiceBoxTipoVehiculo.setItems(FXCollections.observableArrayList(listatipoVehiculo));
@@ -303,6 +306,10 @@ public class ComprarVehiculoController implements Initializable{
 
 
 
+    /**
+	 * Metodo que se ejecuta cuando se desea continuar registrando un carro
+	 * el metodo revisa la opcion de combustible y la opcion de tipovehiculo
+	 */
     @FXML
     void continuarGeneralidades(ActionEvent event) {
     	if(choiceBoxTipoCombustible.getValue()!= null && choiceBoxTipoCombustible.getValue().equals("Híbrido")){
@@ -326,6 +333,9 @@ public class ComprarVehiculoController implements Initializable{
     	}
     }
 
+    /**
+     * Metodo que se ejecuta en caso de que se está registrando sea un vehiculo de tipo Moto
+     */
 	private void GuardarMoto() {
 
 		String marca = txtMarca.getText();
@@ -356,6 +366,10 @@ public class ComprarVehiculoController implements Initializable{
 		}
 	}
 
+	/**
+	 * Metodo que revisa si los campos de textos fueron rellenos de manera correcto
+	 * @return true si todo se relleno de manera correcta y false en caso de que no
+	 */
 	private boolean validarDatosGeneralidades() {
 		System.out.println("verificando");
 		String marca = txtMarca.getText();
@@ -407,12 +421,22 @@ public class ComprarVehiculoController implements Initializable{
 		return false;
 	}
 
+	/*
+	 * Metodo que cambia el Tab del pane para que el usuario pueda seguir llenando la informacion del
+	 * vehiculo
+	 */
 	private void cambiarDeTab(Tab tab) {
         tabPane.getSelectionModel().select(tab);
     }
 
 
 
+	/**
+	 * Metodo que recorre las diferentes instancias de tipoCombustible para determinar cual opcion es la
+	 * seleccionada
+	 * @param tipoCombustible el tipo combustible del ComboBox que seleccionó el usuario
+	 * @return la clase herencia de tipo combustible
+	 */
 	private TipoCombustible determinarTipoCombustible(String tipoCombustible) {
     	TipoCombustible x = null;
 		if(tipoCombustible.equalsIgnoreCase("Diesel")){
@@ -439,7 +463,11 @@ public class ComprarVehiculoController implements Initializable{
 		return x;
 	}
 
-
+	/**
+	 * metodo que recorre las instancias de TipoTransmision para descifrar cual fue la seleccionada por el usuario
+	 * @param tipoTransmision seleccionada en el comboBox
+	 * @return la herencia de TipoTransmision
+	 */
 	private TipoTransmision determinarTipoTransmision(String tipoTransmision) {
 		if (tipoTransmision.equalsIgnoreCase("Automatica")){
 			return TipoTransmision.AUTOMATICA;
@@ -447,6 +475,9 @@ public class ComprarVehiculoController implements Initializable{
 		return TipoTransmision.MANUAL;
 	}
 
+	/*
+	 * Metodo que permite continuar con el registro de vehiculo
+	 */
 	@FXML
     void continuarAutomovil(ActionEvent event) {
 		if(choiceBoxTipoAutomovil.getValue()!= null && choiceBoxTipoAutomovil.getValue().equals("Deportivo")){
@@ -458,6 +489,9 @@ public class ComprarVehiculoController implements Initializable{
 		}
     }
 
+	/*
+	 * Metodo que permite continuar con el registro de vehiculo despues de ingresar los datos de electrico
+	 */
     @FXML
     void continuarElectrico(ActionEvent event) {
     	if(choiceBoxTipoVehiculo.getValue()!= null && choiceBoxTipoVehiculo.getValue().equals("Moto")){
@@ -473,6 +507,9 @@ public class ComprarVehiculoController implements Initializable{
     	}
     }
 
+    /*
+	 * Metodo que permite continuar con el registro de vehiculo despues de ingresar los datos de hibrido
+	 */
     @FXML
     void continuarHibrido(ActionEvent event) {
 		if(choiceBoxTipoVehiculo.getValue()!= null && choiceBoxTipoVehiculo.getValue().equals("Moto")){
@@ -488,6 +525,9 @@ public class ComprarVehiculoController implements Initializable{
     	}
 	}
 
+    /*
+	 * Metodo que permite determinar si la opcion elegida por el usuario en combobox es True o False
+	 */
 	private boolean determinarBooleano(String value) {
 		if (value.equals("SI")){
 			return true;
@@ -495,7 +535,9 @@ public class ComprarVehiculoController implements Initializable{
 		return false;
 	}
 
-
+	/*
+	 * Metodo que permite continuar con el registro de vehiculo despues de ingresar los datos de SafeFamily
+	 */
     @FXML
     void continuarSafeFamily(ActionEvent event) {
     	if(choiceBoxTipoSafeFamily.getValue()!=null && choiceBoxTipoSafeFamily.getValue().equals("Pick Up")){
@@ -507,6 +549,9 @@ public class ComprarVehiculoController implements Initializable{
     	}
     }
 
+    /*
+	 * Metodo que permite continuar con el registro de vehiculo despues de ingresar los datos de Van
+	 */
     @FXML
     void continuarVan(ActionEvent event) {
     	if(choiceBoxTipoVan.getValue()!= null && choiceBoxTipoVan.getValue().equals("Van")){
@@ -522,6 +567,9 @@ public class ComprarVehiculoController implements Initializable{
     	}
     }
 
+    /*
+	 * Metodo que permite continuar con el registro de vehiculo despues de ingresar los datos de Sedan
+	 */
     @FXML
     void continuarSedaneta(ActionEvent event) {
     	if(choiceBoxTipoSedan.getValue()!=null && choiceBoxTipoSedan.getValue().equals("Sedán")){
@@ -535,6 +583,10 @@ public class ComprarVehiculoController implements Initializable{
 
 
 
+    /**
+     * Metodo que guarda el vehiculo de tipo bus una vez todos los parametros han sido llenados
+     * @param event el boton de guardar
+     */
     @FXML
     void guardarBus(ActionEvent event) {
     	String marca = txtMarca.getText();
@@ -574,6 +626,11 @@ public class ComprarVehiculoController implements Initializable{
 
     }
 
+
+    /**
+     * Metodo que verifica que todos los parametros de bus hayan sido llenados correctamente
+     * @return True si fueron llenados correctamente, false si no fueron llenados correctamente
+     */
     private boolean validarDatosBus() {
 		String notificacion = "";
 		if (txtCantidadEjes.getText().equals("")||txtCantidadEjes.getText()==null){
@@ -588,6 +645,10 @@ public class ComprarVehiculoController implements Initializable{
 		return false;
 	}
 
+    /**
+     * Metodo que guarda el vehiculo de tipo camión una vez todos los parametros han sido llenados
+     * @param event el boton de guardar
+     */
 	@FXML
     void guardarCamion(ActionEvent event) {
 
@@ -621,6 +682,10 @@ public class ComprarVehiculoController implements Initializable{
     	}
     }
 
+	/**
+	 * Metodo que valida si los parametros para comprar un camión se llenaron correctamente
+	 * @return True si se llenaron correctamente, false si No se llenaron correctamente
+	 */
     private boolean validarDatosCamion() {
 		String x = "";
 		if (choiceBoxAireAcondicionadoCamion.getValue()==null){
@@ -646,6 +711,10 @@ public class ComprarVehiculoController implements Initializable{
 
 
 
+    /**
+     * Metodo que guarda el vehiculo de tipo deportivo una vez todos los parametros han sido llenados
+     * @param event el boton de guardar
+     */
     @FXML
     void guardarDeportivo(ActionEvent event) {
     	String marca = txtMarca.getText();
@@ -681,6 +750,10 @@ public class ComprarVehiculoController implements Initializable{
 
     }
 
+    /**
+	 * Metodo que valida si los parametros para comprar un deportivo se llenaron correctamente
+	 * @return True si se llenaron correctamente, false si No se llenaron correctamente
+	 */
     private boolean validarDatosDeportivo() {
     	String notificacion = "";
     	if (txtCaballosFuerza.getText().equals("")||txtCaballosFuerza.getText()==null){
@@ -695,6 +768,10 @@ public class ComprarVehiculoController implements Initializable{
     	return false;
 	}
 
+    /**
+	 * Metodo que valida si los parametros para comprar un automovil se llenaron correctamente
+	 * @return True si se llenaron correctamente, false si No se llenaron correctamente
+	 */
 	private boolean validarDatosAutomovil() {
 		String notificacion = "";
 		if(txtNumeroPasajeros.getText().equals("")||txtNumeroPasajeros.getText()==null){
@@ -712,6 +789,10 @@ public class ComprarVehiculoController implements Initializable{
 		return false;
 	}
 
+	/**
+     * Metodo que guarda el vehiculo de tipo Camioneta una vez todos los parametros han sido llenados
+     * @param event el boton de guardar
+     */
 	@FXML
     void guardarCamioneta(ActionEvent event) {
 		String marca = txtMarca.getText();
@@ -753,12 +834,20 @@ public class ComprarVehiculoController implements Initializable{
 
     }
 
+	/**
+	 * Metodo que valida si los parametros para comprar una Camioneta se llenaron correctamente
+	 * @return True si se llenaron correctamente, false si No se llenaron correctamente
+	 */
 	private boolean validarDatosCamioneta() {
 		if ( choiceBox4x4Camioneta.getValue()==null){
 			return false;
 		}return true;
 	}
 
+	/**
+     * Metodo que guarda el vehiculo de tipo sedan una vez todos los parametros han sido llenados
+     * @param event el boton de guardar
+     */
 	private void agregarSedan(){
 		String marca = txtMarca.getText();
 		boolean nuevo = determinarBooleano(choiceBoxNuevo.getValue());
@@ -798,6 +887,10 @@ public class ComprarVehiculoController implements Initializable{
 
 	}
 
+	/**
+     * Metodo que guarda el vehiculo de tipo sedan una vez todos los parametros han sido llenados
+     * @param event el boton de guardar
+     */
 	private boolean validarDatosSedan() {
 		String notificacion = "";
 		if ( choiceBoxVelocidadCrecuero.getValue()==null){
@@ -818,6 +911,10 @@ public class ComprarVehiculoController implements Initializable{
 		return false;
 	}
 
+	/**
+     * Metodo que guarda el vehiculo de tipo van una vez todos los parametros han sido llenados
+     * @param event el boton de guardar
+     */
 	private void agregarVan(){
 		String marca = txtMarca.getText();
 		boolean nuevo = determinarBooleano(choiceBoxNuevo.getValue());
@@ -853,12 +950,20 @@ public class ComprarVehiculoController implements Initializable{
 
 	}
 
+	/**
+	 * Metodo que valida si los parametros para comprar un van se llenaron correctamente
+	 * @return True si se llenaron correctamente, false si No se llenaron correctamente
+	 */
 	private boolean validarDatosVan() {
 		if(txtCapacidadMaletero.getText().equals("")||txtCapacidadMaletero.getText()==null){
 			return true;
 		}return false;
 	}
 
+	/**
+     * Metodo que guarda el vehiculo de tipo PickUp una vez todos los parametros han sido llenados
+     * @param event el boton de guardar
+     */
 	@FXML
     void guardarPickUp(ActionEvent event) {
 		String marca = txtMarca.getText();
@@ -894,6 +999,10 @@ public class ComprarVehiculoController implements Initializable{
     	}
     }
 
+	/**
+	 * Metodo que valida si los parametros para comprar un PickUp se llenaron correctamente
+	 * @return True si se llenaron correctamente, false si No se llenaron correctamente
+	 */
 	private boolean validarDatosPickUp() {
 		String notificacion = "";
 		if(txtCapacidadCarga.getText().equals("")||txtCapacidadCarga.getText()==null){
@@ -908,6 +1017,10 @@ public class ComprarVehiculoController implements Initializable{
 		return false;
 	}
 
+	/**
+	 * Metodo que valida si los parametros para comprar un SafeFamily se llenaron correctamente
+	 * @return True si se llenaron correctamente, false si No se llenaron correctamente
+	 */
 	private boolean validarDatosSafeFamily() {
 		String notificacion = "";
 		if(choiceBoxAireAcondicionadoSafeFamily.getValue()== null){

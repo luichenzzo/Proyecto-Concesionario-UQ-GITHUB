@@ -61,6 +61,13 @@ public class Singleton {
 
 	}
 
+	/**
+	 * Metodo que genera y muestra una alerta
+	 * @param titulo el titulo que tendra el pop up de la alerta
+	 * @param encabezado el encabezado que tendra el pop up de la alerta
+	 * @param contenido el contenido que tendrá el pop up de la alerta
+	 * @param tipoAlerta el icono que tendrá el pop up de la alerta
+	 */
 	public void crearAlerta (String titulo, String encabezado, String contenido, AlertType tipoAlerta){
 		Alert alerta = new Alert(tipoAlerta);
 		alerta.setTitle(titulo);
@@ -144,17 +151,20 @@ public class Singleton {
     	Vehiculo vehiculo = new Vehiculo ("mazda", false, 2015, 7, 315, 990, "jhiu12", "rutaImagen", TipoTransmision.MANUAL, hibrido,25000);
     	detallesOperaciones.add(new DetalleOperaion(227.0,vehiculo));
 		ArrayList<Operacion> arrayOperaciones = new ArrayList<>();
-		Empleado empleado = new Empleado();
+		Empleado empleado = new Empleado("Luis",18,"1234","luichenzzo@gmail.com","3154530677", null,"sexito");
 		arrayOperaciones.add(new OperacionCompra("19", "109203901", 100000.0, detallesOperaciones, empleado ));
 		GenerarReporte.generarPDFConOperaciones(arrayOperaciones);
 	}
 	public String generarReporte(){
+		/*
+		 * temp testing initialization
+		 */
 		ArrayList<DetalleOperaion> detallesOperaciones = new ArrayList<>();
 		Hibrido hibrido = new Hibrido(false, true);
     	Vehiculo vehiculo = new Vehiculo ("mazda", false, 2015, 7, 315, 990, "jhiu12", "rutaImagen", TipoTransmision.MANUAL, hibrido,25000);
     	detallesOperaciones.add(new DetalleOperaion(227.0,vehiculo));
 		ArrayList<Operacion> arrayOperaciones = new ArrayList<>();
-		Empleado empleado = new Empleado();
+		Empleado empleado = new Empleado("Luis",18,"1234","luichenzzo@gmail.com","3154530677", null,"sexito");
 		arrayOperaciones.add(new OperacionCompra("19", "109203901", 100000.0, detallesOperaciones, empleado ));
 		return GenerarReporte.GenerarReporteString(arrayOperaciones);
 	}

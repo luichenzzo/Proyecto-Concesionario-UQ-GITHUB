@@ -64,6 +64,11 @@ public class RegistroClientesController implements Initializable{
 
     private Singleton singleton = Singleton.obtenerInstancia();
 
+    /**
+     * Metodo que revisa si el cliente que fue digitado ya existe, para registrarlo o para advertir al usuario que
+     * el cliente digitado ya existe
+     * @param event
+     */
     @FXML
     void actualizar(ActionEvent event) {
 		Cliente cliente = this.tablaClientes.getSelectionModel().getSelectedItem();
@@ -104,6 +109,10 @@ public class RegistroClientesController implements Initializable{
 
     }
 
+    /**
+     * Metodo que agrega el cliente digitado a la base de datos
+     * @param event
+     */
     @FXML
     void agregar(ActionEvent event) {
     	String nombre = txtNombre.getText();
@@ -134,6 +143,10 @@ public class RegistroClientesController implements Initializable{
 
     }
 
+    /**
+     * Metodo que elimina al cliente seleccionado
+     * @param event
+     */
     @FXML
     void eliminar(ActionEvent event) {
     	Cliente cliente = this.tablaClientes.getSelectionModel().getSelectedItem();
@@ -147,6 +160,10 @@ public class RegistroClientesController implements Initializable{
 
     }
 
+    /**
+     * Metodo que muestra la informacion del cliente que fue seleccionado
+     * @param event
+     */
     @FXML
     void seleccionar(MouseEvent event) {
     	Cliente cliente = this.tablaClientes.getSelectionModel().getSelectedItem();
